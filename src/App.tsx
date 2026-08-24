@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar/Navbar";
+import Hero from "./sections/Hero/Hero";
 import "./App.css";
 
 function App() {
@@ -6,10 +7,7 @@ function App() {
     <>
       <Navbar />
       <main>
-        <section id="inicio">
-          <h1>Diego Solórzano</h1>
-          <p>Desarrollador de Sistemas</p>
-        </section>
+        <Hero />
       </main>
     </>
   );
