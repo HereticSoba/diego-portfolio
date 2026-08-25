@@ -4,6 +4,7 @@ import About from "./sections/About/About";
 import Projects from "./sections/Projects/Projects";
 import Skills from "./sections/Skills/Skills";
 import Experience from "./sections/Experience/Experience";
+import Contact from "./sections/Contact/Contact";
 import "./App.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Projects />
         <Skills />
         <Experience />
+        <Contact />
       </main>
     </>
   );
