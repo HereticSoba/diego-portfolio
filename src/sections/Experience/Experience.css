@@ -1,0 +1,129 @@
+.experience-section {
+    width: 100%;
+    background-color: #050505;
+    border-top: 1px solid #151515;
+}
+
+.experience-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 110px 32px;
+}
+
+.experience-header {
+    max-width: 700px;
+}
+
+.experience-header h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(42px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.experience-header h2 span {
+    color: #38e8c0;
+}
+
+.experience-header > p:last-child {
+    max-width: 580px;
+    margin: 25px 0 0;
+    color: #888888;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.experience-timeline {
+    margin-top: 80px;
+}
+
+.experience-item {
+    display: grid;
+    grid-template-columns: 100px 30px 1fr;
+    gap: 25px;
+    position: relative;
+    min-height: 220px;
+}
+
+.experience-year {
+    padding-top: 2px;
+    color: #38e8c0;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.experience-marker {
+    position:relative;
+    display: flex;
+    justify-content: center;
+}
+
+.experience-marker::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    bottom: -1px;
+    width: 1px;
+    background-color: #252525;
+}
+
+.experience-item:last-child .experience-marker::before {
+    display: none;
+}
+
+.experience-marker span {
+    position: relative;
+    z-index: 1;
+    width: 11px;
+    height: 11px;
+    margin-top: 4px;
+    border: 2px solid #38e8c0;
+    border-radius: 50%;
+    background-color: #050505;
+}
+
+.experience-content {
+    padding: 0 0 65px;
+}
+
+.experience-position {
+    margin: 0 0 7px;
+    color:#38e8c0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.experience-content h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.experience-description {
+    max-width: 700px;
+    margin: 18px 0 20px;
+    color: #888888;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.experience-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.experience-highlights span {
+    padding: 7px 10px;
+    border: 1px solid #24594f;
+    border-radius: 5px;
+    background-color: #0d1f1c;
+    color: #38e8c0;
+    font-size: 11px;
+    font-weight: 600;
+}
