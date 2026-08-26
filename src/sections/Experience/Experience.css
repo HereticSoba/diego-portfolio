@@ -127,3 +127,82 @@
     font-size: 11px;
     font-weight: 600;
 }
+
+/*Responsive*/
+@media (max-width: 700px) {
+    .experience-container {
+        padding: 80px 20px;
+    }
+
+    .experience-header {
+        max-width: none;
+    }
+
+    .experience-header h2 {
+        font-size: clamp(38px, 10vw, 50px);
+        line-height: 1.05;
+        letter-spacing: -1.5px;
+    }
+
+    .experience-header > p:last-child {
+        max-width: none;
+        margin-top: 22px;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .experience-timeline {
+        margin-top: 55px;
+    }
+
+    .experience-item {
+        grid-template-columns: 55px 24px 1fr;
+        gap: 14px;
+        min-height: 0;
+    }
+
+    .experience-year {
+        padding-top: 2px;
+        font-size: 12px;
+    }
+
+    .experience-marker {
+        width: 24px;
+    }
+
+    .experience-marker span {
+        width: 10px;
+        height: 10px;
+    }
+
+    .experience-content {
+        padding-bottom: 50px;
+    }
+
+    .experience-position {
+        margin-bottom: 6px;
+        font-size: 11px;
+        letter-spacing: 1.2px;
+    }
+
+    .experience-content h3 {
+        font-size: 19px;
+        line-height: 1.3;
+    }
+
+    .experience-description {
+        max-width: none;
+        margin: 14px 0 18px;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .experience-highlights {
+        gap: 6px;
+    }
+
+    .experience-highlights span {
+        padding: 6px 9px;
+        font-size: 10px;
+    }
+}

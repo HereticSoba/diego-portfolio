@@ -43,7 +43,7 @@ function Experience() {
                 <div className="experience-timeline">
                     {experiences.map((experience) =>(
                         <article className="experience-item"
-                        key={'${experience.year}-${experience.position}'}
+                        key={`${experience.year}-${experience.position}`}
                         >
                             <div className="experience-year">
                                 {experience.year}
@@ -60,8 +60,8 @@ function Experience() {
                                     {experience.description}
                                 </p>
                                 <div className="experience-highlights">
-                                    {experience.highlights.map((Highlight) =>(
-                                        <span key={Highlight}>{Highlight}</span>
+                                    {experience.highlights.map((highlight) =>(
+                                        <span key={highlight}>{highlight}</span>
                                     ))}
                                 </div>
                             </div>
