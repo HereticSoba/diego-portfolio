@@ -40,7 +40,7 @@ function Skills() {
                     <p className="section-label">/ STACK</p>
                     <h2>
                         Tecnologías y
-                        <span>herramientas.</span>
+                        <span> herramientas.</span>
                     </h2>
                     <p>
                         Tecnologías y herramientas que utilizo para desarrollar, probar y mantener mis proyectos.

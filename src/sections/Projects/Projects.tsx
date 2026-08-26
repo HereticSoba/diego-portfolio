@@ -9,14 +9,6 @@ interface Project {
     categoryLabel: string;
     description: string;
     technologies: string[];
-}
-
-interface Project {
-    title: string;
-    category: Exclude<ProjectCategory, "all">;
-    categoryLabel: string;
-    description: string;
-    technologies: string[];
     image?: string;
 }
 
@@ -27,6 +19,7 @@ const projects: Project[] = [
         categoryLabel: "Mobile",
         description: "Aplicación móvil de comercio electrónico desarrollada para gestionar usuarios, productos, favoritos y compras, integrada con servicios backend.",
         technologies: ["Kotlin", "Android", "MySQL", "REST API"],
+        image: "/projects/mesajil-ecommerce.jpg"
     },
     {
         title: "Mesajil API",
@@ -42,6 +35,7 @@ const projects: Project[] = [
         categoryLabel: "Backend",
         description: "Proyecto backend orientado al desarrollo de servicios y APIs, trabajado con arquitectura de microservicios y comunicación entre servicios.",
         technologies: ["Java", "Spring Boot", "REST", "SOAP", "Maven"],
+        image: "/projects/microservicios.png"
     },
 ];
 
@@ -88,6 +82,7 @@ function Projects() {
                     {filteredProjects.map((project) => (
                         <article className="project-card" key={project.title}>
                             <div className="project-image">
+                                
                                 {project.image ? (
                                     <img
                                         src={project.image}

@@ -6,6 +6,7 @@ import Skills from "./sections/Skills/Skills";
 import Experience from "./sections/Experience/Experience";
 import Contact from "./sections/Contact/Contact";
 import Footer from "./components/Footer/Footer";
+import GithubActivity from "./sections/GithubActivity/GithubActivity";
 import "./App.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <About />
         <Projects />
         <Skills />
+        <GithubActivity />
         <Experience />
         <Contact />
         <Footer />

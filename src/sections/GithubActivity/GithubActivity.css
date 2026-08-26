@@ -1,0 +1,175 @@
+.github-section {
+    width: 100%;
+    background-color: #050505;
+    border-top: 1px solid #151515;
+}
+
+.github-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 110px 32px;
+}
+
+.github-header {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    align-items: end;
+    gap: 80px;
+}
+
+.github-header h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(42px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.github-header h2 span {
+    color: #38e8c0;
+}
+
+.github-introduction {
+    max-width: 420px;
+    margin: 0 0 5px;
+    color: #888888;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.github-card {
+    margin-top: 70px;
+    padding: 30px;
+    border: 1px solid #202020;
+    border-radius: 10px;
+    background-color: #090909;
+}
+
+.github-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #202020;
+}
+
+.github-card-header div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.github-card-header strong {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.github-card-header span {
+    color: #666666;
+    font-size: 12px;
+}
+
+.github-card-header a {
+    color: #38e8c0;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.github-calendar {
+    margin-top: 30px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.github-months {
+    height: 20px;
+    margin-left: 25px;
+}
+
+.github-grid {
+    min-width: 700px;
+    min-height: 120px;
+    display: grid;
+    grid-template-columns: repeat(52, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    grid-auto-flow: column;
+    gap: 4px;
+}
+
+.github-legend {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.github-legend span {
+    margin: 0 5px;
+    color: #666666;
+    font-size: 11px;
+}
+
+.github-legend i {
+    width: 11px;
+    height: 11px;
+    border: 1px solid #1b3a34;
+    border-radius: 2px;
+    background-color: #0d1f1c;
+}
+
+.github-legend i:nth-of-type(2) {
+    background-color: #164238;
+}
+
+.github-legend i:nth-of-type(3) {
+    background-color: #226b5a;
+}
+
+.github-legend i:nth-of-type(4) {
+    background-color: #2da986;
+}
+
+.github-legend i:nth-of-type(5) {
+    background-color: #38e8c0;
+}
+
+@media (max-width: 700px) {
+
+    .github-container {
+        padding: 80px 20px;
+    }
+
+    .github-header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    }
+
+    .github-header h2 {
+        font-size: clamp(38px, 10vw, 50px);
+        line-height: 1.05;
+        letter-spacing: -1.5px;
+    }
+
+    .github-introduction {
+        max-width: none;
+        margin: 0;
+    }
+
+    .github-card {
+        margin-top: 50px;
+        padding: 22px;
+    }
+
+    .github-card-header {
+        align-items: flex-start;
+    }
+
+    .github-calendar {
+        overflow-x: auto;
+    }
+}
