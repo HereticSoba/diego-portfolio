@@ -1,14 +1,6 @@
 import "./GithubActivity.css";
 
-interface ContributionDay{
-    date: string;
-    contributionCount: number;
-    color: string;
-}
 
-interface ContributionWeek {
-    contributionDays: ContributionDay[];
-}
 
 function GithubActivity() {
     return (
