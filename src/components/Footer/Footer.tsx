@@ -8,7 +8,7 @@ function Footer() {
             <div className="footer-container">
                 <div className="footer-brand">
                     <a href="#inicio" className="footer-logo">
-                        &lt;Diego/&gt;
+                        <span>&lt;</span>Diego<span>/&gt;</span>
                     </a>
                     <p>Desarrollador de Sistemas</p>
                 </div>
