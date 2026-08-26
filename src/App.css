@@ -5,27 +5,3 @@
 main {
   width: 100%;
 }
-
-#inicio {
-  max-width: 1200px;
-  min-height: 500px;
-  margin: 0 auto;
-  padding: 100px 32px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#inicio h1 {
-  margin: 0;
-  color: #ffffff;
-  font-size: 64px;
-  line-height: 1.1;
-}
-
-#inicio p {
-  margin-top: 20px;
-  color: #38e8c0;
-  font-size: 24px;
-}
