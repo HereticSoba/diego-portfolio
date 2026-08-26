@@ -11,6 +11,15 @@ interface Project {
     technologies: string[];
 }
 
+interface Project {
+    title: string;
+    category: Exclude<ProjectCategory, "all">;
+    categoryLabel: string;
+    description: string;
+    technologies: string[];
+    image?: string;
+}
+
 const projects: Project[] = [
     {
         title: "Mesajil E-Commerce",
@@ -25,6 +34,7 @@ const projects: Project[] = [
         categoryLabel: "Backend",
         description: "API REST desarrollada para gestionar las operaciones principales de la plataforma, con conexión a MySQL y autenticación mediante JWT.",
         technologies: [".NET 8", "C#", "MySQL", "JWT", "Swagger"],
+        image: "/projects/mesajil-api.png",
     },
     {
         title: "Movies API & Microservices",
@@ -78,7 +88,14 @@ function Projects() {
                     {filteredProjects.map((project) => (
                         <article className="project-card" key={project.title}>
                             <div className="project-image">
-                                <span>Preview</span>
+                                {project.image ? (
+                                    <img
+                                        src={project.image}
+                                        alt={`Preview de ${project.title}`}
+                                    />
+                                ) : (
+                                    <span>Preview</span>
+                                )}
                             </div>
                             <div className="project-content">
                                 <p className="project-category">
