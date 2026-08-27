@@ -16,6 +16,8 @@ export default async function handler(
 
     const token = process.env.GITHUB_TOKEN;
 
+    
+
     if (!token) {
         return new Response(
             JSON.stringify({
@@ -56,61 +58,81 @@ export default async function handler(
     `;
 
     try {
+    const controller = new AbortController();
 
-        const response = await fetch(
-            "https://api.github.com/graphql",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`,
-                },
-                body: JSON.stringify({ query }),
-            }
-        );
+    const timeout = setTimeout(() => {
+        controller.abort();
+    }, 10000);
 
-        const data = await response.json();
-
-        if (!response.ok || data.errors) {
-            return new Response(
-                JSON.stringify({
-                    error: "GitHub API request failed",
-                }),
-                {
-                    status: 502,
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
-            );
+    const response = await fetch(
+        "https://api.github.com/graphql",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": `Bearer ${token}`,
+                "User-Agent": "Diego-Portfolio",
+            },
+            body: JSON.stringify({ query }),
+            signal: controller.signal,
         }
+    );
 
-        return new Response(
-            JSON.stringify(
-                data.data.user.contributionsCollection
-                    .contributionCalendar
-            ),
-            {
-                status: 200,
-                headers: {
-                    "Content-Type": "application/json",
-                    "Cache-Control":
-                        "public, s-maxage=3600, stale-while-revalidate=86400",
-                },
-            }
-        );
+    clearTimeout(timeout);
 
-    } catch {
+    const data = await response.json();
+
+    if (!response.ok || data.errors) {
+        console.error("GitHub API error:", data.errors);
+
         return new Response(
             JSON.stringify({
-                error: "Unexpected server error",
+                error: "GitHub API request failed",
+                details: data.errors ?? null,
             }),
             {
-                status: 500,
+                status: 502,
                 headers: {
                     "Content-Type": "application/json",
                 },
             }
         );
     }
+
+    return new Response(
+        JSON.stringify(
+            data.data.user.contributionsCollection
+                .contributionCalendar
+        ),
+        {
+            status: 200,
+            headers: {
+                "Content-Type": "application/json",
+                "Cache-Control":
+                    "public, s-maxage=3600, stale-while-revalidate=86400",
+            },
+        }
+    );
+
+} catch (error) {
+
+    console.error("GitHub request error:", error);
+
+    return new Response(
+        JSON.stringify({
+            error: "Unexpected server error",
+            details:
+                error instanceof Error
+                    ? error.message
+                    : "Unknown error",
+        }),
+        {
+            status: 500,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }
+    );
+}
 }
