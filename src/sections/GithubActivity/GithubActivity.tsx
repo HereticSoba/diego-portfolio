@@ -123,15 +123,15 @@ function GithubActivity() {
                         </p>
 
                         <h2>
-                            Actividad de
-                            <span> desarrollo.</span>
+                            Contribuciones en
+                            <span> GitHub.</span>
                         </h2>
 
                     </div>
 
                     <p className="github-introduction">
-                        Contribuciones y actividad de desarrollo
-                        durante el último año.
+                        Contribuciones realizadas en distintos proyectos
+                        dentro de desarrollo.
                     </p>
 
                 </div>
