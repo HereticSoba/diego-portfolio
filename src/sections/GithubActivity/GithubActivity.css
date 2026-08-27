@@ -84,18 +84,44 @@
 }
 
 .github-months {
+    min-width: 700px;
     height: 20px;
     margin-left: 25px;
+    display: grid;
+    gap: 4px;
+}
+
+.github-months span {
+    color: #666666;
+    font-size: 11px;
+    white-space: nowrap;
 }
 
 .github-grid {
     min-width: 700px;
-    min-height: 120px;
     display: grid;
-    grid-template-columns: repeat(52, 1fr);
-    grid-template-rows: repeat(7, 1fr);
-    grid-auto-flow: column;
     gap: 4px;
+}
+
+.github-week {
+    display: grid;
+    grid-template-rows: repeat(7, 11px);
+    gap: 4px;
+}
+
+.github-grid span {
+    width: 11px;
+    height: 11px;
+    border: 1px solid #1b3a34;
+    border-radius: 2px;
+    display: block;
+    transition:
+        transform 0.15s ease, border-color 0.15s ease;
+}
+
+.github-grid span:hover {
+    border-color: #ffffff;
+    transform: scale(1.2);
 }
 
 .github-legend {
@@ -136,6 +162,7 @@
     background-color: #38e8c0;
 }
 
+/* Responsive */
 @media (max-width: 700px) {
 
     .github-container {
@@ -171,5 +198,10 @@
 
     .github-calendar {
         overflow-x: auto;
+    }
+
+    .github-months,
+    .github-grid {
+        min-width: 700px;
     }
 }
