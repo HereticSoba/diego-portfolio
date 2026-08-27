@@ -1,16 +1,11 @@
-export default async function handler(
-): Promise<Response> {
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 
-    return new Response(
-        JSON.stringify({
-            status: "ok",
-            message: "GitHub Activity API funcionando"
-        }),
-        {
-            status: 200,
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }
-    );
+export default function handler(
+    _request: VercelRequest,
+    response: VercelResponse
+) {
+    response.status(200).json({
+        status: "ok",
+        message: "GitHub Activity API funcionando"
+    });
 }
