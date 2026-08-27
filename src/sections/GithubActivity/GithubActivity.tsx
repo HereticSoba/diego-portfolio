@@ -131,7 +131,7 @@ function GithubActivity() {
 
                     <p className="github-introduction">
                         Contribuciones realizadas en distintos proyectos
-                        dentro de desarrollo.
+                        de desarrollo.
                     </p>
 
                 </div>
