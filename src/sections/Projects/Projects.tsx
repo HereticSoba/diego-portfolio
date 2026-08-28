@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Projects.css";
 
 type ProjectCategory = "all" | "mobile" | "web" | "backend";
 
 interface Project {
+    slug: string;
     title: string;
     category: Exclude<ProjectCategory, "all">;
     categoryLabel: string;
@@ -14,6 +16,7 @@ interface Project {
 
 const projects: Project[] = [
     {
+        slug: "mesajil-ecommerce",
         title: "Mesajil E-Commerce",
         category: "mobile",
         categoryLabel: "Mobile",
@@ -22,6 +25,7 @@ const projects: Project[] = [
         image: "/projects/mesajil-ecommerce.jpg"
     },
     {
+        slug: "mesajil-api",
         title: "Mesajil API",
         category: "backend",
         categoryLabel: "Backend",
@@ -30,6 +34,7 @@ const projects: Project[] = [
         image: "/projects/mesajil-api.png",
     },
     {
+        slug: "movies-api-microservices",
         title: "Movies API & Microservices",
         category: "backend",
         categoryLabel: "Backend",
@@ -105,9 +110,9 @@ function Projects() {
                                         <span key={technology}>{technology}</span>
                                     ))}
                                 </div>
-                                <button type="button" className="project-link">
+                                <Link to={`/proyectos/${project.slug}`} className="project-link">
                                     Ver proyecto ↗
-                                </button>
+                                </Link>
                             </div>
                         </article>
                     ))}
