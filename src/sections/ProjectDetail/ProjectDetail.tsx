@@ -77,7 +77,7 @@ function ProjectDetail() {
     };
 
     return (
-        <main className="project-detail">
+        <main className={`project-detail ${selectedImage !== null ? "lightbox-open" : ""}`}>
             <div className="project-detail-container">
 
                 {/* Botón volver */}

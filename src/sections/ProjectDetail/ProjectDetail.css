@@ -90,6 +90,7 @@
 
 .project-mobile-image-frame {
     overflow: hidden;
+    aspect-ratio: 9 / 16;
     border: 1px solid #202020;
     border-radius: 12px;
     background-color: #090909;
@@ -107,7 +108,8 @@
 .project-mobile-image-frame img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
 }
 
 .project-mobile-image figcaption {
@@ -206,17 +208,13 @@
     position: fixed;
     z-index: 1000;
     inset: 0;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: rgba(0, 0, 0, 0.35);
-
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    animation: lightboxFade 0.25s ease-out;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: lightboxFade 0.4s ease-out;
 }
 
 @keyframes lightboxFade {
@@ -229,30 +227,35 @@
     }
 }
 
+@keyframes lightboxBlur {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 .project-lightbox-content {
     position: relative;
-
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-
     max-width: 80vw;
     max-height: 88vh;
+    animation: lightboxZoom 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .project-lightbox-content img {
     display: block;
-
-    max-width: 80vw;
-    max-height: 82vh;
-
     width: auto;
     height: auto;
-
+    max-width: 80vw;
+    max-height: 82vh;
     object-fit: contain;
-
     border-radius: 4px;
-
     box-shadow:
         0 0 12px rgba(255, 255, 255, 0.08),
         0 8px 30px rgba(0, 0, 0, 0.45);
@@ -261,7 +264,7 @@
 @keyframes lightboxZoom {
     from {
         opacity: 0;
-        transform: scale(0.92);
+        transform: scale(0.96);
     }
 
     to {
@@ -271,17 +274,12 @@
 }
 
 .project-lightbox-content.slide-next {
-    animation:
-        slideImageFromRight 0.35s ease-out;
+    animation: slideImageFromRight 0.35s ease-out;
 }
 
 .project-lightbox-content.slide-prev {
-    animation:
-        slideImageFromLeft 0.35s ease-out;
+    animation: slideImageFromLeft 0.35s ease-out;
 }
-
-
-/* Deslizamiento hacia la izquierda */
 
 @keyframes slideImageFromRight {
     from {
@@ -294,9 +292,6 @@
         transform: translateX(0);
     }
 }
-
-
-/* Deslizamiento hacia la derecha */
 
 @keyframes slideImageFromLeft {
     from {
@@ -314,20 +309,15 @@
 .project-lightbox-prev,
 .project-lightbox-next {
     position: fixed;
-
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
-
     border: 1px solid #303030;
     border-radius: 50%;
-
     background-color: rgba(20, 20, 20, 0.9);
-
     color: #ffffff;
-
     cursor: pointer;
-
     transition:
         background-color 0.2s ease,
         border-color 0.2s ease,
@@ -345,10 +335,8 @@
 .project-lightbox-close {
     top: 24px;
     right: 28px;
-
     width: 38px;
     height: 38px;
-
     font-size: 24px;
     line-height: 1;
 }
@@ -356,12 +344,9 @@
 .project-lightbox-prev,
 .project-lightbox-next {
     top: 50%;
-
     width: 44px;
     height: 44px;
-
     transform: translateY(-50%);
-
     font-size: 30px;
     line-height: 1;
 }
@@ -379,37 +364,26 @@
     transform: translateY(-50%) scale(1.05);
 }
 
-
-/*CONTADOR*/
-
 .project-lightbox-counter {
     position: absolute;
-
+    z-index: 2;
     bottom: -42px;
     left: 50%;
-
     transform: translateX(-50%);
-
     padding: 6px 12px;
-
     border: 1px solid #252525;
     border-radius: 20px;
-
     background-color: rgba(20, 20, 20, 0.9);
-
     color: #777777;
-
     font-size: 11px;
     letter-spacing: 1px;
-
     white-space: nowrap;
 }
 
 
-/* RESPONSIVE - TABLET*/
+/* RESPONSIVE */
 
 @media (max-width: 800px) {
-
     .project-detail-container {
         padding: 25px 20px 80px;
     }
@@ -435,7 +409,6 @@
     .project-info-grid {
         grid-template-columns: 1fr;
         gap: 45px;
-
         margin-top: 60px;
         padding-top: 40px;
     }
@@ -468,11 +441,7 @@
     }
 }
 
-
-/*RESPONSIVE - MÓVIL*/
-
 @media (max-width: 500px) {
-
     .project-detail {
         padding: 60px 15px;
     }
@@ -512,7 +481,6 @@
     .project-lightbox-next {
         width: 38px;
         height: 38px;
-
         font-size: 25px;
     }
 
@@ -527,10 +495,8 @@
     .project-lightbox-close {
         top: 15px;
         right: 15px;
-
         width: 34px;
         height: 34px;
-
         font-size: 20px;
     }
 
