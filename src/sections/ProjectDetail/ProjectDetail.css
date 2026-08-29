@@ -1,6 +1,6 @@
 .project-detail {
     min-height: 100vh;
-    padding: 120px 32px;
+    padding: 80px 32px;
     background-color: #050505;
     color: #ffffff;
 }
@@ -8,10 +8,14 @@
 .project-detail-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 35px 32px 100px;
+    padding: 25px 32px 70px;
 }
 
-/* Botón volver */
+
+/* ========================================
+   BOTÓN VOLVER
+   ======================================== */
+
 .project-back {
     display: inline-block;
     margin-bottom: 75px;
@@ -21,14 +25,18 @@
     letter-spacing: 1.5px;
     text-decoration: none;
     text-transform: uppercase;
-    transition: color 0.2 ease;
+    transition: color 0.2s ease;
 }
 
 .project-back:hover {
     color: #38e8c0;
 }
 
-/* Header */
+
+/* ========================================
+   HEADER
+   ======================================== */
+
 .project-detail-header {
     max-width: 850px;
 }
@@ -36,7 +44,6 @@
 .project-detail-label {
     margin: 0 0 20px;
     color: #38e8c0;
-    font-size: 12px;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -58,9 +65,13 @@
     line-height: 1.7;
 }
 
-/* Galería */
+
+/* ========================================
+   GALERÍA
+   ======================================== */
+
 .project-gallery-section {
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 .project-detail-section-heading {
@@ -82,11 +93,19 @@
     font-size: 13px;
 }
 
-/* Galería movil */
+
+/* ========================================
+   GALERÍA MÓVIL
+   ======================================== */
+
 .project-mobile-gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
+}
+
+.project-mobile-image {
+    margin: 0;
 }
 
 .project-mobile-image-frame {
@@ -94,7 +113,10 @@
     border: 1px solid #202020;
     border-radius: 12px;
     background-color: #090909;
-    transition: border-color 0.25s ease, transform 0.25s ease;
+    cursor: pointer;
+    transition:
+        border-color 0.25s ease,
+        transform 0.25s ease;
 }
 
 .project-mobile-image-frame:hover {
@@ -102,7 +124,7 @@
     transform: translateY(-4px);
 }
 
-.project-mobile-image img {
+.project-mobile-image-frame img {
     display: block;
     width: 100%;
     height: auto;
@@ -110,22 +132,27 @@
 
 .project-mobile-image figcaption {
     margin-top: 12px;
-    color: #666666;
-    font-size: 11px;
+    color: #777777;
+    font-size: 13px;
+    font-weight: 500;
     text-align: center;
 }
 
-/* Información */
+
+/* ========================================
+   INFORMACIÓN
+   ======================================== */
+
 .project-info-grid {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
-    gap: 100px;
-    margin-top: 120px;
-    padding-top: 70px;
+    gap: 80px;
+    margin-top: 75px;
+    padding-top: 45px;
     border-top: 1px solid #202020;
 }
 
-.project-info-block p:not(.project-detail-section-heading p) {
+.project-info-block p {
     max-width: 650px;
     margin: 0 0 20px;
     color: #888888;
@@ -134,7 +161,10 @@
 }
 
 
-/* Stack */
+/* ========================================
+   STACK TECNOLÓGICO
+   ======================================== */
+
 .project-stack {
     display: flex;
     flex-wrap: wrap;
@@ -152,10 +182,13 @@
 }
 
 
-/* Características */
+/* ========================================
+   CARACTERÍSTICAS
+   ======================================== */
+
 .project-features {
-    margin-top: 100px;
-    padding-top: 70px;
+    margin-top: 75px;
+    padding-top: 45px;
     border-top: 1px solid #202020;
 }
 
@@ -188,10 +221,13 @@
 }
 
 
-/* Footer */
+/* ========================================
+   FOOTER
+   ======================================== */
+
 .project-detail-footer {
-    margin-top: 100px;
-    padding-top: 35px;
+    margin-top: 65px;
+    padding-top: 30px;
     border-top: 1px solid #202020;
 }
 
@@ -202,15 +238,286 @@
     text-decoration: none;
 }
 
+.project-detail-footer a:hover {
+    color: #ffffff;
+}
 
-/* Responsive */
+
+/* ========================================
+   LIGHTBOX
+   ======================================== */
+
+.project-lightbox {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.20);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    animation: lightboxFade 0.25s ease-out;
+}
+
+
+/* Fondo del lightbox */
+
+@keyframes lightboxFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* ========================================
+   CONTENEDOR DE LA IMAGEN
+   ======================================== */
+
+.project-lightbox-content {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 80vw;
+    max-height: 88vh;
+}
+
+
+/* Imagen */
+
+.project-lightbox-content img {
+    display: block;
+
+    max-width: 80vw;
+    max-height: 82vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 0 12px rgba(255, 255, 255, 0.08),
+        0 8px 30px rgba(0, 0, 0, 0.45);
+}
+
+
+/* ========================================
+   ANIMACIÓN INICIAL / ZOOM
+   ======================================== */
+
+@keyframes lightboxZoom {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ========================================
+   ANIMACIÓN DE DESLIZAMIENTO
+   ======================================== */
+
+/* Imagen siguiente: entra desde la derecha */
+
+.project-lightbox-content.slide-next {
+    animation:
+        slideImageFromRight 0.35s ease-out;
+}
+
+
+/* Imagen anterior: entra desde la izquierda */
+
+.project-lightbox-content.slide-prev {
+    animation:
+        slideImageFromLeft 0.35s ease-out;
+}
+
+
+/* Deslizamiento hacia la izquierda */
+
+@keyframes slideImageFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* Deslizamiento hacia la derecha */
+
+@keyframes slideImageFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* ========================================
+   BOTONES DEL LIGHTBOX
+   ======================================== */
+
+.project-lightbox-close,
+.project-lightbox-prev,
+.project-lightbox-next {
+    position: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #303030;
+    border-radius: 50%;
+
+    background-color: rgba(20, 20, 20, 0.9);
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* Hover */
+
+.project-lightbox-close:hover,
+.project-lightbox-prev:hover,
+.project-lightbox-next:hover {
+    border-color: #38e8c0;
+    color: #38e8c0;
+}
+
+
+/* ========================================
+   BOTÓN CERRAR
+   ======================================== */
+
+.project-lightbox-close {
+    top: 24px;
+    right: 28px;
+
+    width: 38px;
+    height: 38px;
+
+    font-size: 24px;
+    line-height: 1;
+}
+
+
+/* ========================================
+   BOTONES ANTERIOR / SIGUIENTE
+   ======================================== */
+
+.project-lightbox-prev,
+.project-lightbox-next {
+    top: 50%;
+
+    width: 44px;
+    height: 44px;
+
+    transform: translateY(-50%);
+
+    font-size: 30px;
+    line-height: 1;
+}
+
+
+/* Anterior */
+
+.project-lightbox-prev {
+    left: 24px;
+}
+
+
+/* Siguiente */
+
+.project-lightbox-next {
+    right: 24px;
+}
+
+
+/* Mantener posición vertical en hover */
+
+.project-lightbox-prev:hover,
+.project-lightbox-next:hover {
+    transform: translateY(-50%) scale(1.05);
+}
+
+
+/* ========================================
+   CONTADOR
+   ======================================== */
+
+.project-lightbox-counter {
+    position: absolute;
+
+    bottom: -42px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    padding: 6px 12px;
+
+    border: 1px solid #252525;
+    border-radius: 20px;
+
+    background-color: rgba(20, 20, 20, 0.9);
+
+    color: #777777;
+
+    font-size: 11px;
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   RESPONSIVE - TABLET
+   ======================================== */
+
 @media (max-width: 800px) {
+
     .project-detail-container {
         padding: 25px 20px 80px;
     }
 
     .project-back {
-        margin-bottom: 55px;
+        margin-bottom: 40px;
     }
 
     .project-detail-header h1 {
@@ -229,19 +536,55 @@
 
     .project-info-grid {
         grid-template-columns: 1fr;
-        gap: 60px;
-        margin-top: 90px;
-        padding-top: 55px;
+        gap: 45px;
+
+        margin-top: 60px;
+        padding-top: 40px;
     }
 
     .project-features {
-        margin-top: 80px;
-        padding-top: 55px;
+        margin-top: 60px;
+        padding-top: 40px;
+    }
+
+    .project-lightbox-content {
+        max-width: 75vw;
+    }
+
+    .project-lightbox-content img {
+        max-width: 75vw;
+        max-height: 78vh;
+    }
+
+    .project-lightbox-prev {
+        left: 15px;
+    }
+
+    .project-lightbox-next {
+        right: 15px;
+    }
+
+    .project-lightbox-close {
+        top: 18px;
+        right: 18px;
     }
 }
 
 
+/* ========================================
+   RESPONSIVE - MÓVIL
+   ======================================== */
+
 @media (max-width: 500px) {
+
+    .project-detail {
+        padding: 60px 15px;
+    }
+
+    .project-detail-container {
+        padding: 20px 10px 60px;
+    }
+
     .project-mobile-gallery {
         grid-template-columns: 1fr 1fr;
         gap: 10px;
@@ -252,10 +595,50 @@
     }
 
     .project-mobile-image figcaption {
-        font-size: 10px;
+        margin-top: 9px;
+        font-size: 11px;
     }
 
     .project-features-grid {
         grid-template-columns: 1fr;
+    }
+
+    .project-lightbox-content {
+        max-width: 80vw;
+    }
+
+    .project-lightbox-content img {
+        max-width: 80vw;
+        max-height: 75vh;
+    }
+
+    .project-lightbox-prev,
+    .project-lightbox-next {
+        width: 38px;
+        height: 38px;
+
+        font-size: 25px;
+    }
+
+    .project-lightbox-prev {
+        left: 8px;
+    }
+
+    .project-lightbox-next {
+        right: 8px;
+    }
+
+    .project-lightbox-close {
+        top: 15px;
+        right: 15px;
+
+        width: 34px;
+        height: 34px;
+
+        font-size: 20px;
+    }
+
+    .project-lightbox-counter {
+        bottom: -35px;
     }
 }

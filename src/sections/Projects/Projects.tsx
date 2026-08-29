@@ -110,7 +110,7 @@ function Projects() {
                                         <span key={technology}>{technology}</span>
                                     ))}
                                 </div>
-                                <Link to={`/proyectos/${project.slug}`} className="project-link">
+                                <Link to={`/projects/${project.slug}`} className="project-link">
                                     Ver proyecto ↗
                                 </Link>
                             </div>
