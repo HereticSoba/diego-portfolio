@@ -9,11 +9,13 @@ import Experience from "./sections/Experience/Experience";
 import Contact from "./sections/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import GithubActivity from "./sections/GithubActivity/GithubActivity";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import "./App.css";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={
           <>

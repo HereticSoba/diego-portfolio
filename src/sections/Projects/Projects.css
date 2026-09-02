@@ -183,19 +183,22 @@
 }
 
 .project-link {
-  margin-top: 25px;
+  display: inline-block;
+  margin-top: 18px;
   padding: 0;
-
   border: none;
-
   background: transparent;
   color: #38e8c0;
-
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
-
+  text-decoration: none;
   cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.project-link:hover {
+  color: #ffffff;
 }
 
 /* Responsive */
@@ -272,6 +275,6 @@
   }
 
   .project-link {
-    margin-top: 22px;
+    margin-top: 18px;
   }
 }
