@@ -10,7 +10,7 @@ function About() {
                         <span>de software</span>
                     </h2>
                     <p>
-                        Soy estudiante de Desarrollo de Sistemas de Información, con experencia
+                        Soy estudiante de Desarrollo de Sistemas de Información, con experiencia
                         en soporte técnico TI en entornos corporativos y desarrollo de aplicaciones móviles
                         y servicios backend.
                     </p>
@@ -53,6 +53,7 @@ function About() {
                         <span className="highlight-number">04</span>
                         <div className="highlight-info">
                             <h3>Idiomas</h3>
+                            <p>Español · Nativo</p>
                             <p>Inglés · Avanzado</p>
                         </div>
                     </div>

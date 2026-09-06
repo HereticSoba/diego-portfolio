@@ -97,7 +97,9 @@ function ProjectDetail() {
                             <figure className="project-mobile-image"
                                 key={index}>
                                 <div
-                                    className="project-mobile-image-frame"
+                                    className={`project-mobile-image-frame ${
+                                        image.type === "desktop" ? "desktop-image-frame" : ""
+                                    }`}
                                     onClick={() =>
                                         setSelectedImage(index)}>
                                     <img src={image.src} alt={image.title} />

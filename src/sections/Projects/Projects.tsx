@@ -39,7 +39,7 @@ const projects: Project[] = [
         category: "backend",
         categoryLabel: "Backend",
         description: "Proyecto backend orientado al desarrollo de servicios y APIs, trabajado con arquitectura de microservicios y comunicación entre servicios.",
-        technologies: ["Java", "Spring Boot", "REST", "SOAP", "Maven"],
+        technologies: ["Java", "Spring Boot", "OpenFeign", "Keycloak", "Docker"],
         image: "/projects/microservicios.png"
     },
 ];

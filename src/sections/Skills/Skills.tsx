@@ -12,7 +12,7 @@ const skillGroups: SkillGroup[] = [
     },
     {
         title: "Frameworks & Platforms",
-        skills: [".NET", "Spring Boot"],
+        skills: [".NET", "Spring Boot", "Spring Cloud"],
     },
     {
         title: "Databases",
@@ -25,6 +25,7 @@ const skillGroups: SkillGroup[] = [
             "Docker",
             "Postman",
             "Swagger",
+            "Keycloak",
             "Jira",
             "Visual Studio",
             "Android Studio",

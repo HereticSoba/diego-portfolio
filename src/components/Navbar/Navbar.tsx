@@ -16,13 +16,15 @@ function Navbar() {
 
                 <nav className={`navbar-menu ${menuOpen ? "open" : ""}`}>
                     <a href="#inicio" onClick={closeMenu}>Inicio</a>
+                    <a href="#sobre-mi" onClick={closeMenu}>Sobre mí</a>
                     <a href="#proyectos" onClick={closeMenu}>Proyectos</a>
                     <a href="#stack" onClick={closeMenu}>Stack</a>
+                    <a href="#github-activity" onClick={closeMenu}>GitHub</a>
                     <a href="#experiencia" onClick={closeMenu}>Experiencia</a>
-                    <a href="#sobre-mi" onClick={closeMenu}>Sobre mí</a>
                     <a href="#contacto" onClick={closeMenu}>Contacto</a>
                 </nav>
-                <a href="/cv.pdf" className="navbar-cv">Descargar CV</a>
+                <a href="/projects/CV-SOLORZANO-VILLEGAS-DIEGO.pdf" download="CV-SOLORZANO-VILLEGAS-DIEGO.pdf"
+                className="navbar-cv">Descargar CV</a>
 
                 <button
                     type="button"

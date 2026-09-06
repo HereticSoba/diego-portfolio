@@ -1,6 +1,7 @@
 export interface GalleryImage {
     src: string;
     title: string;
+    type?: "mobile" | "desktop";
 }
 
 export interface ProjectData {
@@ -23,26 +24,32 @@ export const projectDetails: ProjectData[] = [
             {
                 src: "/projects/mesajil/login.jpeg",
                 title: "INICIO DE SESIÓN",
+                type: "mobile",
             },
             {
                 src: "/projects/mesajil/registro.jpeg",
                 title: "REGISTRO DE USUARIO",
+                type: "mobile",
             },
             {
                 src: "/projects/mesajil/home.jpeg",
                 title: "PÁGINA PRINCIPAL",
+                type: "mobile",
             },
             {
                 src: "/projects/mesajil/checkout.jpeg",
                 title: "FINALIZAR COMPRA",
+                type: "mobile",
             },
             {
                 src: "/projects/mesajil/pago.jpeg",
                 title: "PANTALLA DE PAGO",
+                type: "mobile",
             },
             {
                 src: "/projects/mesajil/profile.jpeg",
                 title: "PERFIL DE USUARIO",
+                type: "mobile",
             },
         ],
 
@@ -77,14 +84,17 @@ export const projectDetails: ProjectData[] = [
             {
                 src: "/projects/mesajilapi/documentacion.png",
                 title: "DOCUMENTACIÓN SWAGGER",
+                type: "desktop",
             },
             {
                 src: "/projects/mesajilapi/operacionescrud.png",
                 title: "OPERACIONES CRUD",
+                type: "desktop",
             },
             {
                 src: "/projects/mesajilapi/authjwt.png",
                 title: "AUTENTICACIÓN JWT",
+                type: "desktop",
             },
         ],
 
@@ -113,44 +123,59 @@ export const projectDetails: ProjectData[] = [
     {
         slug: "movies-api-microservices",
         title: "Movies API & Microservices",
-        description: "Proyecto backend orientado al desarrollo de servicios y APIs, trabajado con arquitectura de microservicios y comunicación entre servicios.",
+        description: "Solución en base a una arquitectura de microservicios desarrollada con Spring Boot, integrando descubrimiento y configuración de servicios, autenticación mediante OAuth2 y comunicación entre microservicios.",
 
         gallery: [
             {
                 src: "/projects/movies-api-microservices/movies1.jpeg",
                 title: "CAPTURA 1",
+                type: "desktop",
             },
             {
                 src: "/projects/movies-api-microservices/movies2.jpeg",
                 title: "CAPTURA 2",
+                type: "desktop",
             },
             {
                 src: "/projects/movies-api-microservices/movies3.jpeg",
                 title: "CAPTURA 3",
+                type: "desktop",
             },
         ],
 
         about: [
-            "Proyecto backend orientado al desarrollo de APIs y servicios independientes.",
-            "Se trabajó con Spring Boot y una arquitectura de microservicios para separar las diferentes responsabilidades del sistema.",
+            "Movies API & Microservices es una solución backend desarrollada bajo una arquitectura de microservicios, con servicios independientes para gestionar las diferentes responsabilidades del sistema.",
+            "El proyecto tiene integrado Eureka Server para el descubrimiento de servicios y Config Server para centralizar la configuración de los microservicios. Además, se utilizó Keycloak con OAuth2 para la autenticación y autorización.",
+            "Los componentes fueron dockerizados para facilitar la ejecución y el despliegue, incorporando una database, MapStruct y Swagger dentro de la solución.",
         ],
 
         technologies: [
             "Java",
             "Spring Boot",
-            "REST",
-            "SOAP",
+            "Spring Cloud",
+            "OpenFeign",
+            "MapStruct",
+            "Swagger",
+            "Eureka Server",
+            "Config Server",
+            "Keycloak",
+            "OAuth2",
             "Maven",
             "Docker",
+            "MySQL",
         ],
 
         features: [
-            "Desarrollo de APIs REST",
             "Arquitectura de microservicios",
-            "Servicios SOAP",
-            "Comunicación entre servicios",
-            "Pruebas con Postman",
-            "Gestión de dependencias con Maven",
+            "Descubrimiento de servicios con Eureka",
+            "Configuración centralizada con Config Server",
+            "Autenticación y autorización con Keycloak",
+            "Integración con OAuth2",
+            "Comunicación entre servicios con OpenFeign",
+            "Mapeo de entidades con MapStruct",
+            "Documentación de APIs con Swagger",
+            "Contenerización con Docker",
+            "Pruebas de APIs con Postman",
         ],
     },
 ];
