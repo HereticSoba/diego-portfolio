@@ -1,7 +1,10 @@
 .github-section {
     width: 100%;
-    background-color: #050505;
-    border-top: 1px solid #151515;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-primary);
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .github-container {
@@ -19,20 +22,20 @@
 
 .github-header h2 {
     margin: 0;
-    color: #ffffff;
+    color: var(--text-primary);
     font-size: clamp(42px, 5vw, 64px);
     line-height: 1;
     letter-spacing: -2px;
 }
 
 .github-header h2 span {
-    color: #38e8c0;
+    color: var(--accent);
 }
 
 .github-introduction {
     max-width: 420px;
     margin: 0 0 5px;
-    color: #888888;
+    color: var(--text-secondary);
     font-size: 15px;
     line-height: 1.7;
 }
@@ -116,7 +119,8 @@
     border-radius: 2px;
     display: block;
     transition:
-        transform 0.15s ease, border-color 0.15s ease;
+        transform 0.15s ease,
+        border-color 0.15s ease;
 }
 
 .github-grid span:hover {
@@ -163,8 +167,8 @@
 }
 
 /* Responsive */
-@media (max-width: 700px) {
 
+@media (max-width: 700px) {
     .github-container {
         padding: 80px 20px;
     }

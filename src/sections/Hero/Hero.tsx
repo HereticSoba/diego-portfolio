@@ -6,7 +6,7 @@ function Hero() {
             <div className="hero-container">
 
                 <div className="hero-content">
-                    <p className="hero-greeting">Hola, soy Diego Solórzano</p>
+                    <p className="hero-greeting">Hola, soy Diego Solórzano<span className="hero-cursor"></span></p>
                     <h1 className="hero-title">Desarrollador <span>de Sistemas</span></h1>
                     <p className="hero-description">
                         Me enfoco en desarrollar aplicaciones móviles, APIs y soluciones de software que
@@ -45,9 +45,11 @@ function Hero() {
                 </div>
 
                 <div className="hero-image-container">
-                    <div className="hero-image-placeholder">
-                        <span>Foto</span>
-                        <small>Próximanente</small>
+                    <div className="hero-image">
+                        <img
+                        src="/projects/diego-profile.jpeg"
+                        alt="Diego Solórzano"
+                        />
                     </div>
                 </div>
             </div>

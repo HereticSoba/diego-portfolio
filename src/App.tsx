@@ -10,11 +10,13 @@ import Contact from "./sections/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import GithubActivity from "./sections/GithubActivity/GithubActivity";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import SplashScreen from "./components/SplashScreen/SplashScreen";
 import "./App.css";
 
 function App() {
   return (
     <BrowserRouter>
+    <SplashScreen/>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={

@@ -127,18 +127,28 @@ export const projectDetails: ProjectData[] = [
 
         gallery: [
             {
-                src: "/projects/movies-api-microservices/movies1.jpeg",
-                title: "CAPTURA 1",
+                src: "/projects/movies-api-microservices/eureka.png",
+                title: "EUREKA SERVER",
                 type: "desktop",
             },
             {
-                src: "/projects/movies-api-microservices/movies2.jpeg",
-                title: "CAPTURA 2",
+                src: "/projects/movies-api-microservices/keycloak.png",
+                title: "KEYCLOAK",
                 type: "desktop",
             },
             {
-                src: "/projects/movies-api-microservices/movies3.jpeg",
-                title: "CAPTURA 3",
+                src: "/projects/movies-api-microservices/api-peliculas.png",
+                title: "SWAGGER - API PELICULAS",
+                type: "desktop",
+            },
+            {
+                src: "/projects/movies-api-microservices/api-resenas.png",
+                title: "SWAGGER - API RESEÑAS",
+                type: "desktop",
+            },
+            {
+                src: "/projects/movies-api-microservices/docker.png",
+                title: "DOCKER",
                 type: "desktop",
             },
         ],

@@ -1,8 +1,46 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [darkMode, setDarkMode] = useState(() => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+            return false;
+        }
+        document.documentElement.removeAttribute("data-theme");
+        return true;
+    });
+    const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
+        const button = event.currentTarget;
+        const rect = button.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+        const maxDistance = Math.hypot(
+            Math.max(x, window.innerWidth - x),
+            Math.max(y, window.innerHeight - y)
+        );
+        document.documentElement.style.setProperty("--theme-x", `${x}px`);
+        document.documentElement.style.setProperty("--theme-y", `${y}px`);
+        document.documentElement.style.setProperty("--theme-radius", `${maxDistance}px`);
+        const changeTheme = () => {
+            const newDarkMode = !darkMode;
+            setDarkMode(newDarkMode);
+            if (newDarkMode) {
+                document.documentElement.removeAttribute("data-theme");
+                localStorage.setItem("theme", "dark");
+            } else {
+                document.documentElement.setAttribute("data-theme", "light");
+                localStorage.setItem("theme", "light");
+            }
+        };
+        if ("startViewTransition" in document){
+            document.startViewTransition(changeTheme);
+        }else{
+            changeTheme();
+        }
+    };
     const closeMenu = () => {
         setMenuOpen(false);
     };
@@ -23,19 +61,28 @@ function Navbar() {
                     <a href="#experiencia" onClick={closeMenu}>Experiencia</a>
                     <a href="#contacto" onClick={closeMenu}>Contacto</a>
                 </nav>
-                <a href="/projects/CV-SOLORZANO-VILLEGAS-DIEGO.pdf" download="CV-SOLORZANO-VILLEGAS-DIEGO.pdf"
-                className="navbar-cv">Descargar CV</a>
+                <div className="navbar-actions">
+                    <button
+                        type="button"
+                        className="navbar-theme"
+                        onClick={toggleTheme}
+                        aria-label={darkMode ? "Activar modo claro" : "Activar modo oscuro"}>
+                        {darkMode ? "☀" : "☾"}
+                    </button>
+                    <a href="/projects/CV-SOLORZANO-VILLEGAS-DIEGO.pdf" download="CV-SOLORZANO-VILLEGAS-DIEGO.pdf"
+                        className="navbar-cv">Descargar CV</a>
 
-                <button
-                    type="button"
-                    className={`navbar-toggle ${menuOpen ? "active" : ""}`}
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    aria-label="Abrir menú"
-                    aria-expanded={menuOpen}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                    <button
+                        type="button"
+                        className={`navbar-toggle ${menuOpen ? "active" : ""}`}
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        aria-label="Abrir menú"
+                        aria-expanded={menuOpen}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
             </div>
         </header>
     );

@@ -231,7 +231,7 @@ function Contact() {
                             Máximo 1000 caracteres.
                         </span>
                         <span className="form-hint">
-                            * Campo requerido
+                            * Campo requerido.
                         </span>
                         {errors.message && (
                             <span className="form-error">{errors.message}</span>

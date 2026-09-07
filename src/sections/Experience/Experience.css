@@ -1,7 +1,10 @@
 .experience-section {
     width: 100%;
-    background-color: #050505;
-    border-top: 1px solid #151515;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-primary);
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .experience-container {
@@ -16,20 +19,20 @@
 
 .experience-header h2 {
     margin: 0;
-    color: #ffffff;
+    color: var(--text-primary);
     font-size: clamp(42px, 5vw, 64px);
     line-height: 1;
     letter-spacing: -2px;
 }
 
 .experience-header h2 span {
-    color: #38e8c0;
+    color: var(--accent);
 }
 
 .experience-header > p:last-child {
     max-width: 580px;
     margin: 25px 0 0;
-    color: #888888;
+    color: var(--text-secondary);
     font-size: 15px;
     line-height: 1.7;
 }
@@ -48,14 +51,14 @@
 
 .experience-year {
     padding-top: 2px;
-    color: #38e8c0;
+    color: var(--accent);
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 1px;
 }
 
 .experience-marker {
-    position:relative;
+    position: relative;
     display: flex;
     justify-content: center;
 }
@@ -66,7 +69,7 @@
     top: 8px;
     bottom: -1px;
     width: 1px;
-    background-color: #252525;
+    background-color: var(--border-secondary);
 }
 
 .experience-item:last-child .experience-marker::before {
@@ -79,9 +82,9 @@
     width: 11px;
     height: 11px;
     margin-top: 4px;
-    border: 2px solid #38e8c0;
+    border: 2px solid var(--accent);
     border-radius: 50%;
-    background-color: #050505;
+    background-color: var(--bg-primary);
 }
 
 .experience-content {
@@ -90,7 +93,7 @@
 
 .experience-position {
     margin: 0 0 7px;
-    color:#38e8c0;
+    color: var(--accent);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -99,7 +102,7 @@
 
 .experience-content h3 {
     margin: 0;
-    color: #ffffff;
+    color: var(--text-primary);
     font-size: 24px;
     font-weight: 600;
 }
@@ -107,7 +110,7 @@
 .experience-description {
     max-width: 700px;
     margin: 18px 0 20px;
-    color: #888888;
+    color: var(--text-secondary);
     font-size: 14px;
     line-height: 1.8;
 }
@@ -120,15 +123,16 @@
 
 .experience-highlights span {
     padding: 7px 10px;
-    border: 1px solid #24594f;
+    border: 1px solid var(--border-secondary);
     border-radius: 5px;
-    background-color: #0d1f1c;
-    color: #38e8c0;
+    background-color: var(--bg-secondary);
+    color: var(--accent);
     font-size: 11px;
     font-weight: 600;
 }
 
-/*Responsive*/
+/* Responsive */
+
 @media (max-width: 700px) {
     .experience-container {
         padding: 80px 20px;

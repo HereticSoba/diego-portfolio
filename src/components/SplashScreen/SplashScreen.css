@@ -1,0 +1,162 @@
+.splash-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #050505;
+    overflow: hidden;
+    animation: splash-exit 0.5s ease 1.7s forwards;
+}
+
+.splash-mosaic {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    display: grid;
+    grid-template-columns: repeat(25, 1fr);
+    grid-template-rows: repeat(25, 1fr);
+    gap: 5px;
+    pointer-events: none;
+}
+
+.splash-mosaic span {
+    width: 7px;
+    height: 7px;
+    justify-self: center;
+    align-self: center;
+    background-color: #111111;
+    opacity: 1;
+    animation: splash-square-wave 2.2s ease-in-out infinite;
+}
+
+/* Retraso de cuadrados para efecto */
+.splash-mosaic span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.splash-mosaic span:nth-child(2) {
+    animation-delay: 0.03s;
+}
+
+.splash-mosaic span:nth-child(3) {
+    animation-delay: 0.06s;
+}
+
+.splash-mosaic span:nth-child(4) {
+    animation-delay: 0.09s;
+}
+
+.splash-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: splash-content-in 0.5s ease-out;
+}
+
+.splash-logo {
+    color: #38e8c0;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.splash-status {
+    margin: 28px 0 14px;
+    color: #777777;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.splash-line {
+    width: 120px;
+    height: 1px;
+    overflow: hidden;
+    background-color: #252525;
+}
+
+.splash-line span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #38e8c0;
+    transform: translateX(-100%);
+    animation: splash-line 1.4s ease-in-out forwards;
+}
+
+@keyframes splash-content-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes splash-line {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes splash-exit {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+
+@keyframes splash-mosaic-wave {
+    from {
+        transform: translate(-18%, -18%);
+    }
+
+    to {
+        transform: translate(18%, 18%);
+    }
+}
+
+@keyframes splash-square-wave {
+    0% {
+        background-color: #0b0b0b;
+        transform: scale(0.85);
+    }
+
+    20% {
+        background-color: rgba(56, 232, 192, 0.45);
+        transform: scale(1);
+    }
+
+    45% {
+        background-color: rgba(56, 232, 192, 0.45);
+        transform: scale(1);
+    }
+
+    70% {
+        background-color: #111111;
+        transform: scale(0.85);
+    }
+
+    100% {
+        background-color: #0b0b0b;
+        transform: scale(0.85);
+    }
+}
