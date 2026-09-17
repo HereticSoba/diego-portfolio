@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import "./Navbar.css";
 
 function Navbar() {
+    const { t, i18n } = useTranslation();
     const [menuOpen, setMenuOpen] = useState(false);
     const [darkMode, setDarkMode] = useState(() => {
         const savedTheme = localStorage.getItem("theme");
@@ -35,33 +37,56 @@ function Navbar() {
                 localStorage.setItem("theme", "light");
             }
         };
-        if ("startViewTransition" in document){
+        if ("startViewTransition" in document) {
             document.startViewTransition(changeTheme);
-        }else{
+        } else {
             changeTheme();
         }
     };
-    const closeMenu = () => {
+    const handleNavigation = (
+        event: React.MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault();
+        const targetId = event.currentTarget.getAttribute("href");
+        if (!targetId) {
+            return;
+        }
+        const target = document.querySelector(targetId);
+        if (!target) {
+            return;
+        }
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
         setMenuOpen(false);
+    };
+    const toggleLanguage = () => {
+        const newLanguage = i18n.language === "es" ? "en" : "es";
+        i18n.changeLanguage(newLanguage);
+        localStorage.setItem("language", newLanguage);
     };
     return (
         <header className="navbar">
             <div className="navbar-container">
-
-                <a href="#inicio" className="navbar-logo" onClick={closeMenu}>
+                <a href="#inicio" className="navbar-logo" onClick={() => setMenuOpen(false)}>
                     <span>&lt;</span>Diego<span>/&gt;</span>
                 </a>
-
                 <nav className={`navbar-menu ${menuOpen ? "open" : ""}`}>
-                    <a href="#inicio" onClick={closeMenu}>Inicio</a>
-                    <a href="#sobre-mi" onClick={closeMenu}>Sobre mí</a>
-                    <a href="#proyectos" onClick={closeMenu}>Proyectos</a>
-                    <a href="#stack" onClick={closeMenu}>Stack</a>
-                    <a href="#github-activity" onClick={closeMenu}>GitHub</a>
-                    <a href="#experiencia" onClick={closeMenu}>Experiencia</a>
-                    <a href="#contacto" onClick={closeMenu}>Contacto</a>
+                    <a href="#inicio" onClick={handleNavigation}>{t("navbar.home")}</a>
+                    <a href="#sobre-mi" onClick={handleNavigation}>{t("navbar.about")}</a>
+                    <a href="#proyectos" onClick={handleNavigation}>{t("navbar.projects")}</a>
+                    <a href="#stack" onClick={handleNavigation}>{t("navbar.stack")}</a>
+                    <a href="#github-activity" onClick={handleNavigation}>{t("navbar.github")}</a>
+                    <a href="#experiencia" onClick={handleNavigation}>{t("navbar.experience")}</a>
+                    <a href="#contacto" onClick={handleNavigation}>{t("navbar.contact")}</a>
                 </nav>
                 <div className="navbar-actions">
+                    <button type="button" className={`navbar-language-switch ${i18n.language === "en" ? "is-en" : ""}`}
+                        onClick={toggleLanguage}
+                        aria-label="Cambiar idioma">
+                        <span className={`lang-option ${i18n.language === "es" ? "active" : ""}`}>ES</span>
+                        <span className={`lang-option ${i18n.language === "en" ? "active" : ""}`}>EN</span>
+                    </button>
                     <button
                         type="button"
                         className="navbar-theme"
@@ -70,7 +95,7 @@ function Navbar() {
                         {darkMode ? "☀" : "☾"}
                     </button>
                     <a href="/projects/CV-SOLORZANO-VILLEGAS-DIEGO.pdf" download="CV-SOLORZANO-VILLEGAS-DIEGO.pdf"
-                        className="navbar-cv">Descargar CV</a>
+                        className="navbar-cv">{t("navbar.cv")}</a>
 
                     <button
                         type="button"

@@ -1,18 +1,26 @@
 .navbar {
-    width: 100%;
-    border-bottom: 1px solid var(--border-primary);
-    background-color: var(--bg-primary);
-    position: sticky;
-    top: 0;
+    width: 90%;
+    border: 1px solid var(--border-navbar);
+    background-color: var(--bg-navbar);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    -webkit-backdrop-filter: blur(12px);
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 1100px;
+    border-radius: 16px;
     z-index: 1000;
     transition:
         background-color 0.3s ease,
-        border-color 0.3s ease;
+        border-color 0.3s ease,
+        backdrop-filter 0.3s ease;
 }
 
 .navbar-container {
     max-width: 1200px;
-    height: 72px;
+    height: 60px;
     margin: 0 auto;
     padding: 0 32px;
     display: flex;
@@ -38,6 +46,7 @@
     align-items: center;
     gap: 32px;
     z-index: 1001;
+    font-weight: 700;
 }
 
 .navbar-menu a {
@@ -77,6 +86,56 @@
     gap: 16px;
 }
 
+.navbar-language-switch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    border: 1px solid var(--border-secondary);
+    border-radius: 20px;
+    background-color: var(--bg-secondary);
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.25s ease;
+}
+
+.navbar-language-switch:hover {
+    border-color: var(--accent);
+}
+
+.navbar-language-switch::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: calc(50% - 3px);
+    height: calc(100% - 6px);
+    background-color: var(--accent);
+    border-radius: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-language-switch.is-en::before {
+    transform: translateX(100%);
+}
+
+.lang-option {
+    position: relative;
+    z-index: 1;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+    user-select: none;
+}
+
+.lang-option.active {
+    color: var(--bg-primary);
+}
+
 .navbar-theme {
     width: 36px;
     height: 36px;
@@ -102,7 +161,7 @@
     transform: rotate(15deg);
 }
 
-/* para responsive */
+/* responsive */
 .navbar-toggle {
     display: none;
     width: 42px;
@@ -148,9 +207,11 @@
 @media (max-width: 700px) {
     .navbar {
         position: fixed !important;
-        top: 0;
-        left: 0;
-        width: 100dvw;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 92dvw;
+        border-radius: 14px;
         z-index: 9999;
     }
 
@@ -162,9 +223,9 @@
         position: relative;
         width: 100%;
         max-width: none;
-        height: 72px;
-        min-height: 72px;
-        padding: 0 20px;
+        height: 60px;
+        min-height: 60px;
+        padding: 0 10px;
         box-sizing: border-box;
     }
 
@@ -177,28 +238,47 @@
     }
 
     .navbar-menu {
-        display: none;
+        width: 100%;
+        display: flex;
         position: absolute;
-        top: 72px;
+        top: 68px;
         left: 0;
         right: 0;
         padding: 15px 24px 25px;
+        border-radius: 14px;
+        border: 1px solid var(--border-navbar);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
         flex-direction: column;
         align-items: stretch;
         gap: 0;
-        border-top: 1px solid var(--border-primary);
-        border-bottom: 1px solid var(--border-primary);
-        background-color: var(--bg-primary);
+        background-color: var(--bg-secondary);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px) scale(0.98);
+        pointer-events: none;
+        transition: 
+            opacity 0.25s ease, 
+            transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+            visibility 0.25s ease,
+            background-color 0.3s ease;
     }
 
     .navbar-menu.open {
-        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
     }
 
     .navbar-menu a {
         padding: 16px 0;
-        border-bottom: 1px solid var(--border-primary);
+        border-bottom: 1px solid var(--border-navbar);
         font-size: 14px;
+        color: var(--text-primary);
+        font-weight: 700;
+        transition: color 0.2s ease;
     }
 
     .navbar-menu a:last-child {

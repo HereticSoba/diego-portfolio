@@ -1,109 +1,152 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaGithub, FaEye } from "react-icons/fa";
+import { FiChevronDown } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
 import "./Projects.css";
 
 type ProjectCategory = "all" | "mobile" | "web" | "backend";
 
-interface Project {
+export interface ProjectData {
     slug: string;
-    title: string;
     category: Exclude<ProjectCategory, "all">;
-    categoryLabel: string;
-    description: string;
     technologies: string[];
     image?: string;
+    githubUrl?: string;
 }
 
-const projects: Project[] = [
+export const ProjectDetails: ProjectData[] = [
     {
         slug: "mesajil-ecommerce",
-        title: "Mesajil E-Commerce",
         category: "mobile",
-        categoryLabel: "Mobile",
-        description: "Aplicación móvil de comercio electrónico desarrollada para gestionar usuarios, productos, favoritos y compras, integrada con servicios backend.",
         technologies: ["Kotlin", "Android", "MySQL", "REST API"],
-        image: "/projects/mesajil-ecommerce.jpg"
+        image: "/projects/mesajil-ecommerce.jpg",
+        githubUrl: "https://github.com/HereticSoba/Mesajil-AppMovil",
     },
     {
         slug: "mesajil-api",
-        title: "Mesajil API",
         category: "backend",
-        categoryLabel: "Backend",
-        description: "API REST desarrollada para gestionar las operaciones principales de la plataforma, con conexión a MySQL y autenticación mediante JWT.",
         technologies: [".NET 8", "C#", "MySQL", "JWT", "Swagger"],
         image: "/projects/mesajil-api.png",
+        githubUrl: "https://github.com/HereticSoba/Mesajil-AppMovil",
     },
     {
         slug: "movies-api-microservices",
-        title: "Movies API & Microservices",
         category: "backend",
-        categoryLabel: "Backend",
-        description: "Proyecto backend orientado al desarrollo de servicios y APIs, trabajado con arquitectura de microservicios y comunicación entre servicios.",
         technologies: ["Java", "Spring Boot", "OpenFeign", "Keycloak", "Docker"],
-        image: "/projects/microservicios.png"
+        image: "/projects/microservicios.png",
+        githubUrl: "https://github.com/HereticSoba/MicroservicioPeliculas",
     },
 ];
 
 function Projects() {
+    const { t } = useTranslation();
     const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
-    const filteredProjects = activeCategory === "all" ? projects
-        : projects.filter((project) => project.category === activeCategory);
-
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const filteredProjects = activeCategory === "all" ? ProjectDetails
+        : ProjectDetails.filter((project) => project.category === activeCategory);
+    const categoryLabels: Record<ProjectCategory, string> = {
+        all: t("projects.all"),
+        mobile: t("projects.mobile"),
+        web: t("projects.web"),
+        backend: t("projects.backend"),
+    }
     return (
         <section id="proyectos" className="projects-section">
             <div className="projects-container">
                 <div className="projects-header">
                     <div>
-                        <p className="section-label">/ PROYECTOS</p>
+                        <p className="section-label">{t("projects.label")}</p>
                         <h2>
-                            Cosas que he
-                            <span> construido.</span>
+                            {t("projects.title")}
+                            <span>{t("projects.titleHighlight")}</span>
                         </h2>
                     </div>
                     <p className="projects-introduction">
-                        Una selección de aplicaciones, APIs y soluciones de software
-                        desarrollados durante mi formación y experiencia.
-                    </p>
+                        {t("projects.introduction")}</p>
                 </div>
                 <div className="projects-filters">
-                    <button type="button" className={activeCategory === "all" ? "active" : ""}
-                        onClick={() => setActiveCategory("all")}>
-                        Todos
-                    </button>
-                    <button type="button" className={activeCategory === "mobile" ? "active" : ""}
-                        onClick={() => setActiveCategory("mobile")}>
-                        Mobile
-                    </button>
-                    <button type="button" className={activeCategory === "web" ? "active" : ""}
-                        onClick={() => setActiveCategory("web")}>
-                        Web
-                    </button>
-                    <button type="button" className={activeCategory === "backend" ? "active" : ""}
-                        onClick={() => setActiveCategory("backend")}>
-                        Backend
-                    </button>
+                    <div className="projects-mobile-filter">
+                        <button type="button" className="projects-filter-toggle"
+                            onClick={() => setIsFilterOpen((previous) => !previous)}
+                            aria-expanded={isFilterOpen}>
+                            {categoryLabels[activeCategory]}
+                            <FiChevronDown className={isFilterOpen ? "open" : ""} />
+                        </button>
+
+                        <div className={`projects-filter-menu ${isFilterOpen ? "open" : ""}`}>
+                            <button type="button"
+                                className={activeCategory === "all" ? "active" : ""}
+                                onClick={() => {
+                                    setActiveCategory("all");
+                                    setIsFilterOpen(false);
+                                }}>
+                                {categoryLabels.all}
+                            </button>
+                            <button type="button"
+                                className={activeCategory === "mobile" ? "active" : ""}
+                                onClick={() => {
+                                    setActiveCategory("mobile");
+                                    setIsFilterOpen(false);
+                                }}>
+                                {categoryLabels.mobile}
+                            </button>
+                            <button type="button"
+                                className={activeCategory === "web" ? "active" : ""}
+                                onClick={() => {
+                                    setActiveCategory("web");
+                                    setIsFilterOpen(false);
+                                }}>
+                                {categoryLabels.web}
+                            </button>
+                            <button type="button"
+                                className={activeCategory === "backend" ? "active" : ""}
+                                onClick={() => {
+                                    setActiveCategory("backend");
+                                    setIsFilterOpen(false);
+                                }}>
+                                {categoryLabels.backend}
+                            </button>
+                        </div>
+                    </div>
+                    <div className="projects-desktop-filter">
+                        <button type="button" className={activeCategory === "all" ? "active" : ""}
+                            onClick={() => setActiveCategory("all")}>
+                            {categoryLabels.all}
+                        </button>
+                        <button type="button" className={activeCategory === "mobile" ? "active" : ""}
+                            onClick={() => setActiveCategory("mobile")}>
+                            {categoryLabels.mobile}
+                        </button>
+                        <button type="button" className={activeCategory === "web" ? "active" : ""}
+                            onClick={() => setActiveCategory("web")}>
+                            {categoryLabels.web}
+                        </button>
+                        <button type="button" className={activeCategory === "backend" ? "active" : ""}
+                            onClick={() => setActiveCategory("backend")}>
+                            {categoryLabels.backend}
+                        </button>
+                    </div>
                 </div>
                 <div className="projects-grid">
                     {filteredProjects.map((project) => (
-                        <article className="project-card" key={project.title}>
+                        <article className="project-card" key={project.slug}>
                             <div className="project-image">
-                                
                                 {project.image ? (
                                     <img
                                         src={project.image}
-                                        alt={`Preview de ${project.title}`}
-                                    />
+                                        alt={`${t("projects.imageAlt")} ${t(`projectsData.${project.slug}.title`)}`} />
                                 ) : (
-                                    <span>Preview</span>
+                                    <span>{t("projects.preview")}</span>
                                 )}
                             </div>
                             <div className="project-content">
                                 <p className="project-category">
-                                    {project.categoryLabel}
+                                    {categoryLabels[project.category]}
                                 </p>
-                                <h3>{project.title}</h3>
+                                <h3>{t(`projectsData.${project.slug}.title`)}</h3>
                                 <p className="project-description">
-                                    {project.description}
+                                    {t(`projectsData.${project.slug}.description`)}
                                 </p>
                                 <div className="project-technologies">
                                     {project.technologies.map((technology) => (
@@ -111,8 +154,18 @@ function Projects() {
                                     ))}
                                 </div>
                                 <Link to={`/projects/${project.slug}`} className="project-link">
-                                    Ver proyecto ↗
+                                    <FaEye />
+                                    {t("projects.viewProject")}
                                 </Link>
+                                {project.githubUrl && (
+                                    <a href={project.githubUrl}
+                                        className="project-link project-github"
+                                        target="_blank"
+                                        rel="noopener noreferrer">
+                                        <FaGithub />
+                                        {t("projects.viewGithub")}
+                                    </a>
+                                )}
                             </div>
                         </article>
                     ))}

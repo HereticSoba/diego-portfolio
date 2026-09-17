@@ -11,25 +11,40 @@ import Footer from "./components/Footer/Footer";
 import GithubActivity from "./sections/GithubActivity/GithubActivity";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import SplashScreen from "./components/SplashScreen/SplashScreen";
+import { FadeIn } from "./components/FadeIn/FadeIn";
 import "./App.css";
 
 function App() {
   return (
     <BrowserRouter>
-    <SplashScreen/>
+      <SplashScreen />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={
           <>
             <Navbar />
             <main>
-              <Hero />
-              <About />
-              <Projects />
-              <Skills />
-              <GithubActivity />
-              <Experience />
-              <Contact />
+              <FadeIn>
+                <Hero />
+              </FadeIn>
+              <FadeIn>
+                <About />
+              </FadeIn>
+              <FadeIn>
+                <Projects />
+              </FadeIn>
+              <FadeIn>
+                <Skills />
+              </FadeIn>
+              <FadeIn>
+                <GithubActivity />
+              </FadeIn>
+              <FadeIn>
+                <Experience />
+              </FadeIn>
+              <FadeIn>
+                <Contact />
+              </FadeIn>
               <Footer />
             </main>
           </>

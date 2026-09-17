@@ -35,7 +35,7 @@
     color: var(--accent);
 }
 
-.contact-intro > p:last-child {
+.contact-intro>p:last-child {
     max-width: 500px;
     margin: 28px 0 0;
     color: var(--text-secondary);
@@ -62,15 +62,25 @@
         border-color 0.2s ease;
 }
 
+.contact-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    color: var(--accent);
+    font-size: 22px;
+    margin-right: 18px;
+}
+
 .contact-item:hover {
     padding-left: 10px;
     border-color: var(--accent);
 }
 
-.contact-item > div {
+.contact-item>div {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    flex: 1;
 }
 
 .contact-label {
@@ -111,7 +121,7 @@
         letter-spacing: -2px;
     }
 
-    .contact-intro > p:last-child {
+    .contact-intro>p:last-child {
         max-width: none;
         margin-top: 22px;
         font-size: 15px;
@@ -141,6 +151,70 @@
         flex-shrink: 0;
         font-size: 18px;
     }
+
+    .contact-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 14px;
+    }
+}
+
+@property --border-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.contact-form-box {
+    position: relative;
+    padding: 32px;
+    border-radius: 10px;
+    background-color: var(--bg-primary);
+    background-clip: padding-box;
+    box-shadow: 0 0 30px rgba(56, 232, 192, 0.08);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+}
+
+.contact-form-box::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 14px;
+    padding: 2px;
+    background: conic-gradient(
+        from var(--border-angle),
+        transparent 0%,
+        transparent 20%,
+        var(--accent) 360deg
+    );
+    -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: rotateGlow 3.5s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes rotateGlow {
+    to{
+        --border-angle: 360deg;
+    }
+}
+
+.contact-form-box > * {
+    position: relative;
+    z-index: 3;
+}
+
+.contact-form-title {
+    margin: 0 0 28px;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
 /* Form */
@@ -258,9 +332,15 @@
     color: #ff6b6b;
 }
 
+
+/* Responsive */
 @media (max-width: 700px) {
     .contact-form {
         margin-top: 30px;
+    }
+
+    .contact-submit {
+        width: 100%;
     }
 
     .contact-submit {

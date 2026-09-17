@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import "./Skills.css";
 
 interface SkillGroup {
@@ -7,19 +8,19 @@ interface SkillGroup {
 
 const skillGroups: SkillGroup[] = [
     {
-        title: "Languages",
+        title: "skills.groups.languages",
         skills: ["Kotlin", "C#", "Java"],
     },
     {
-        title: "Frameworks & Platforms",
+        title: "skills.groups.frameworks",
         skills: [".NET", "Spring Boot", "Spring Cloud"],
     },
     {
-        title: "Databases",
+        title: "skills.groups.databases",
         skills: ["MySQL", "SQL Server"],
     },
     {
-        title: "Tools",
+        title: "skills.groups.tools",
         skills: [
             "Git/GitHub",
             "Docker",
@@ -34,23 +35,22 @@ const skillGroups: SkillGroup[] = [
 ];
 
 function Skills() {
+    const { t } = useTranslation();
     return (
         <section id="stack" className="skills-section">
             <div className="skills-container">
                 <div className="skills-header">
-                    <p className="section-label">/ STACK</p>
+                    <p className="section-label">{t("skills.label")}</p>
                     <h2>
-                        Tecnologías y
-                        <span> herramientas.</span>
+                        {t("skills.title")}{" "}
+                        <span>{t("skills.titleHighlight")}</span>
                     </h2>
-                    <p>
-                        Tecnologías y herramientas que utilizo para desarrollar, probar y mantener mis proyectos.
-                    </p>
+                    <p>{t("skills.subtitle")}</p>
                 </div>
                 <div className="skills-groups">
                     {skillGroups.map((group) => (
                         <div className="skill-group" key={group.title}>
-                            <h3>{group.title}</h3>
+                            <h3>{t(group.title)}</h3>
                             <div className="skill-tags">
                                 {group.skills.map((skill) => (
                                     <span key={skill}>{skill}</span>

@@ -1,7 +1,10 @@
 import "./Contact.css";
 import { useState, type FormEvent } from "react";
+import { FaEnvelope, FaGithub, FaLinkedin, FaFilePdf } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 function Contact() {
+    const { t } = useTranslation();
     const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
     const [isFormValid, setIsFormValid] = useState(false);
     const [errors, setErrors] = useState({
@@ -15,38 +18,39 @@ function Contact() {
         switch (name) {
             case "name":
                 if (!value.trim()) {
-                    error = "El nombre es obligatorio.";
+                    error = t("contact.errores.nameRequired");
                 } else if (value.trim().length < 2) {
-                    error = "El nombre debe tener al menos 2 caracteres.";
+                    error = t("contact.errors.nameMinLength");
                 } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(value)) {
-                    error = "El nomnbre solo puede contener letras y espacios.";
+                    error = t("contact.errors.namePattern");
                 }
                 break;
 
             case "email":
                 if (!value.trim()) {
-                    error = "El correo electrónico es obligatorio.";
+                    error = t("contact.errors.emailRequired");
                 } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-                    error = "Ingrese un electrónico válido.";
+                    error = t("contact.errores.emailInvalid");
                 }
                 break;
 
             case "subject":
                 if (!value.trim()) {
-                    error = "Selecciona un asunto.";
+                    error = t("contact.errors.subjectRequired");
                 }
                 break;
 
             case "message":
                 if (!value.trim()) {
-                    error = "El mensaje es obligatorio.";
+                    error = t("contact.errors.messageRequired");
                 } else if (value.trim().length < 10) {
-                    error = "El mensaje debe tener al menos 10 caracteres.";
+                    error = t("contact.errors.messageMinLength");
                 }
                 break;
         }
         return error;
     };
+
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setStatus("sending");
@@ -76,19 +80,17 @@ function Contact() {
             <div className="contact-container">
                 <div className="contact-left">
                     <div className="contact-intro">
-                        <p className="section-label">/ CONTACTO</p>
+                        <p className="section-label">{t("contact.label")}</p>
                         <h2>
-                            ¿Hablamos
-                            <span>?</span>
+                            {t("contact.title")}
+                            <span>{t("contact.titleHighlight")}</span>
                         </h2>
-                        <p>
-                            Estoy abierto a oportunidades laborales,
-                            proyectos y colaboraciones relacionadas con desarrollo.
-                        </p>
+                        <p>{t("contact.subtitle")}</p>
                     </div>
                     <div className="contact-links">
                         <a href="mailto:diegofaridbv@gmail.com"
                             className="contact-item">
+                            <FaEnvelope className="contact-icon" />
                             <div>
                                 <span className="contact-label">Email</span>
                                 <span className="contact-value">
@@ -101,10 +103,11 @@ function Contact() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="contact-item">
+                            <FaLinkedin className="contact-icon" />
                             <div>
                                 <span className="contact-label">LinkedIn</span>
                                 <span className="contact-value">
-                                    /its-diego-solorzano
+                                    Diego Solorzano
                                 </span>
                             </div>
                             <span className="contact-arrow">↗</span>
@@ -113,144 +116,139 @@ function Contact() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="contact-item">
+                            <FaGithub className="contact-icon" />
                             <div>
                                 <span className="contact-label">GitHub</span>
-                                <span className="contact-value">/HereticSoba</span>
+                                <span className="contact-value">HereticSoba</span>
                             </div>
                             <span className="contact-arrow">↗</span>
                         </a>
                         <a href="/projects/CV-SOLORZANO-VILLEGAS-DIEGO.pdf" download="CV-SOLORZANO-VILLEGAS-DIEGO.pdf"
                             className="contact-item contact-cv">
+                            <FaFilePdf className="contact-icon" />
                             <div>
-                                <span className="contact-label">Currículum</span>
-                                <span className="contact-value">Descargar CV</span>
+                                <span className="contact-label">{t("contact.links.cv")}</span>
+                                <span className="contact-value">{t("contact.links.downloadCv")}</span>
                             </div>
                             <span className="contact-arrow">↓</span>
                         </a>
                     </div>
                 </div>
 
-
-                <form className="contact-form" onSubmit={handleSubmit}
-                    onChange={(event) => {
-                        const target = event.target;
-                        if (
-                            !(target instanceof HTMLInputElement) &&
-                            !(target instanceof HTMLTextAreaElement) &&
-                            !(target instanceof HTMLSelectElement)
-                        ) {
-                            return;
-                        }
-                        const error = validateField(target.name, target.value);
-                        setErrors((previous) => ({
-                            ...previous,
-                            [target.name]: error,
-                        }));
-                        const form = event.currentTarget;
-                        const fields = ["name", "email", "subject", "message"];
-                        const valid = fields.every((field) => {
-                            const element = form.elements.namedItem(field);
+                <div className="contact-form-box">
+                    <h3 className="contact-form-title">{t("contact.form.title")}</h3>
+                    <form className="contact-form" onSubmit={handleSubmit}
+                        onChange={(event) => {
+                            const target = event.target;
                             if (
-                                !(element instanceof HTMLInputElement) &&
-                                !(element instanceof HTMLTextAreaElement) &&
-                                !(element instanceof HTMLSelectElement)
+                                !(target instanceof HTMLInputElement) &&
+                                !(target instanceof HTMLTextAreaElement) &&
+                                !(target instanceof HTMLSelectElement)
                             ) {
-                                return false;
+                                return;
                             }
-                            return !validateField(field, element.value);
-                        });
-                        setIsFormValid(valid);
-                    }}>
-                    <div className="form-group">
-                        <label htmlFor="name">NOMBRE *</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            placeholder="Tu nombre"
-                            maxLength={50}
-                            required
-                        />
-                        {errors.name && (
-                            <span className="form-error">{errors.name}</span>
+                            const error = validateField(target.name, target.value);
+                            setErrors((previous) => ({
+                                ...previous,
+                                [target.name]: error,
+                            }));
+                            const form = event.currentTarget;
+                            const fields = ["name", "email", "subject", "message"];
+                            const valid = fields.every((field) => {
+                                const element = form.elements.namedItem(field);
+                                if (
+                                    !(element instanceof HTMLInputElement) &&
+                                    !(element instanceof HTMLTextAreaElement) &&
+                                    !(element instanceof HTMLSelectElement)
+                                ) {
+                                    return false;
+                                }
+                                return !validateField(field, element.value);
+                            });
+                            setIsFormValid(valid);
+                        }}>
+                        <div className="form-group">
+                            <label htmlFor="name">{t("contact.form.nameLabel")}</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder={t("contact.form.namePlaceholder")}
+                                maxLength={50}
+                                required
+                            />
+                            {errors.name && (
+                                <span className="form-error">{errors.name}</span>
+                            )}
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="email">{t("contact.form.emailLabel")}</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder={t("contact.form.emailPlaceholder")}
+                                maxLength={100}
+                                required
+                            />
+                            {errors.email && (
+                                <span className="form-error">{errors.email}</span>
+                            )}
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="subject">{t("contact.form.subjectLabel")}</label>
+                            <select id="subject" name="subject" defaultValue="" required>
+                                <option value="" disabled>
+                                    {t("contact.form.selectOption")}
+                                </option>
+                                <option value={t("contact.form.options.job")}>
+                                    {t("contact.form.options.job")}
+                                </option>
+                                <option value={t("contact.form.options.collaboration")}>
+                                    {t("contact.form.options.collaboration")}
+                                </option>
+                                <option value={t("contact.form.options.project")}>
+                                    {t("contact.form.options.project")}
+                                </option>
+                                <option value={t("contact.form.other")}>
+                                    {t("contact.form.other")}
+                                </option>
+                            </select>
+                            {errors.subject && (
+                                <span className="form-error">{errors.subject}</span>
+                            )}
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="message">{t("contact.form.messageLabel")}</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows={6}
+                                placeholder={t("contact.form.messagePlaceholder")}
+                                maxLength={1000}
+                                required
+                            />
+                            <span className="form-hint">{t("contact.form.maxChars")}</span>
+                            <span className="form-hint">{t("contact.form.requiredField")}</span>
+                            {errors.message && (
+                                <span className="form-error">{errors.message}</span>
+                            )}
+                        </div>
+                        <button type="submit" className="contact-submit" disabled={!isFormValid || status === "sending"}>
+                            {status === "sending" ? t("contact.form.sendingButton") : t("contact.form.sendButton")}
+                        </button>
+                        {status === "success" && (
+                            <p className="form-status success">
+                                {t("contact.form.statusSuccess")}
+                            </p>
                         )}
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="email">EMAIL *</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="example@email.com"
-                            maxLength={100}
-                            required
-                        />
-                        {errors.email && (
-                            <span className="form-error">{errors.email}</span>
+                        {status === "error" && (
+                            <p className="form-status error">
+                                {t("contact.form.statusError")}
+                            </p>
                         )}
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="subject">ASUNTO *</label>
-                        <select
-                            id="subject"
-                            name="subject"
-                            defaultValue=""
-                            required
-                        >
-                            <option value="" disabled>
-                                -- Selecciona una opción --
-                            </option>
-                            <option value="Oportunidad Laboral">
-                                Oportunidad Laboral
-                            </option>
-                            <option value="Colaboración">
-                                Colaboración
-                            </option>
-                            <option value="Proyecto">
-                                Proyecto
-                            </option>
-                            <option value="Otro">
-                                Otro
-                            </option>
-                        </select>
-                        {errors.subject && (
-                            <span className="form-error">{errors.subject}</span>
-                        )}
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="message">MENSAJE *</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows={6}
-                            placeholder="Escribe tu mensaje..."
-                            maxLength={1000}
-                            required
-                        />
-                        <span className="form-hint">
-                            Máximo 1000 caracteres.
-                        </span>
-                        <span className="form-hint">
-                            * Campo requerido.
-                        </span>
-                        {errors.message && (
-                            <span className="form-error">{errors.message}</span>
-                        )}
-                    </div>
-                    <button type="submit" className="contact-submit" disabled={!isFormValid || status === "sending"}>
-                        {status === "sending" ? "ENVIANDO..." : "ENVIAR MENSAJE"}
-                    </button>
-                    {status === "success" && (
-                        <p className="form-status success">
-                            Solicitud enviada correctamente.
-                        </p>
-                    )}
-                    {status === "error" && (
-                        <p className="form-status error">
-                            No se pudo enviar la solicitud. Inténtalo nuevamente.
-                        </p>
-                    )}
-                </form>
+                    </form>
+                </div>
             </div>
         </section>
     );

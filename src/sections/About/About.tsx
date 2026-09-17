@@ -1,50 +1,40 @@
+import { useTranslation } from "react-i18next";
 import "./About.css";
 
 function About() {
+    const { t } = useTranslation();
     return (
         <section id="sobre-mi" className="about-section">
             <div className="about-container">
                 <div className="about-content">
-                    <p className="section-label">SOBRE MÍ</p>
-                    <h2>Desarrollo soluciones
-                        <span>de software</span>
+                    <p className="section-label">{t("about.label")}</p>
+                    <h2>{t("about.title")}<span>{t("about.titleHighlight")}</span>
                     </h2>
-                    <p>
-                        Soy estudiante de Desarrollo de Sistemas de Información, con experiencia
-                        en soporte técnico TI en entornos corporativos y desarrollo de aplicaciones móviles
-                        y servicios backend.
-                    </p>
-                    <p>
-                        Me interesa desarrollar soluciones de software que integren aplicaciones, servicios y
-                        bases de datos, buscando crear sistemas funcionales, mantenibles y orientados a las necesidades
-                        del cliente.
-                    </p>
-                    <p>
-                        Mi experiencia en soporte TI me ha permitido desarrollar una visión práctica de la tecnología, 
-                        desde la atención y resolución de incidencias hasta la implementación y mantenimiento de soluciones.
-                    </p>
+                    <p>{t("about.paragraph1")}</p>
+                    <p>{t("about.paragraph2")}</p>
+                    <p>{t("about.paragraph3")}</p>
                 </div>
                 <div className="about-highlights">
                     <div className="highlight">
                         <span className="highlight-number">01</span>
                         <div className="highlight-info">
-                            <h3>Desarrollo</h3>
-                            <p>Mobile · Backend · APIs</p>
+                            <h3>{t("about.development")}</h3>
+                            <p>{t("about.developmentDescription")}</p>
                         </div>
                     </div>
 
                     <div className="highlight">
                         <span className="highlight-number">02</span>
                         <div className="highlight-info">
-                            <h3>Experiencia</h3>
-                            <p>Soporte TI · Entornos corporativos</p>
+                            <h3>{t("about.experience")}</h3>
+                            <p>{t("about.experienceDescription")}</p>
                         </div>
                     </div>
 
                     <div className="highlight">
                         <span className="highlight-number">03</span>
                         <div className="highlight-info">
-                            <h3>Metodología</h3>
+                            <h3>{t("about.methodology")}</h3>
                             <p>Scrum</p>
                         </div>
                     </div>
@@ -52,9 +42,9 @@ function About() {
                     <div className="highlight">
                         <span className="highlight-number">04</span>
                         <div className="highlight-info">
-                            <h3>Idiomas</h3>
-                            <p>Español · Nativo</p>
-                            <p>Inglés · Avanzado</p>
+                            <h3>{t("about.languages")}</h3>
+                            <p>{t("about.spanish")}</p>
+                            <p>{t("about.english")}</p>
                         </div>
                     </div>
 
