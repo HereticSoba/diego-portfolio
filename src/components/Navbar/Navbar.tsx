@@ -6,6 +6,9 @@ function Navbar() {
     const { t, i18n } = useTranslation();
     const [menuOpen, setMenuOpen] = useState(false);
     const [darkMode, setDarkMode] = useState(() => {
+        if (typeof window === "undefined") {
+            return true;
+        }
         const savedTheme = localStorage.getItem("theme");
         if (savedTheme === "light") {
             document.documentElement.setAttribute("data-theme", "light");

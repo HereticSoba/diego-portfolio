@@ -28,7 +28,7 @@ export const ProjectDetails: ProjectData[] = [
         category: "backend",
         technologies: [".NET 8", "C#", "MySQL", "JWT", "Swagger"],
         image: "/projects/mesajil-api.png",
-        githubUrl: "https://github.com/HereticSoba/Mesajil-AppMovil",
+        githubUrl: "https://github.com/HereticSoba/Mesajil-Backend",
     },
     {
         slug: "movies-api-microservices",

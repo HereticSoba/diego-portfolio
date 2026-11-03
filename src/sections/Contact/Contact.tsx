@@ -18,10 +18,10 @@ function Contact() {
         switch (name) {
             case "name":
                 if (!value.trim()) {
-                    error = t("contact.errores.nameRequired");
+                    error = t("contact.errors.nameRequired");
                 } else if (value.trim().length < 2) {
                     error = t("contact.errors.nameMinLength");
-                } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(value)) {
+                } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s'’-]+$/.test(value)) {
                     error = t("contact.errors.namePattern");
                 }
                 break;
@@ -30,7 +30,7 @@ function Contact() {
                 if (!value.trim()) {
                     error = t("contact.errors.emailRequired");
                 } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-                    error = t("contact.errores.emailInvalid");
+                    error = t("contact.errors.emailInvalid");
                 }
                 break;
 
@@ -210,8 +210,8 @@ function Contact() {
                                 <option value={t("contact.form.options.project")}>
                                     {t("contact.form.options.project")}
                                 </option>
-                                <option value={t("contact.form.other")}>
-                                    {t("contact.form.other")}
+                                <option value={t("contact.form.options.other")}>
+                                    {t("contact.form.options.other")}
                                 </option>
                             </select>
                             {errors.subject && (
