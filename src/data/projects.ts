@@ -3,15 +3,45 @@ export interface GalleryImage {
     type?: "mobile" | "desktop";
 }
 
+export type ProjectCategory = "mobile" | "web" | "backend";
+
 export interface ProjectData {
     slug: string;
-    category: "mobile" | "web" | "backend";
+    category: ProjectCategory;
     technologies: string[];
-    gallery: GalleryImage[];
+    image?: string;
     githubUrl?: string;
 }
 
-export const projectDetails: ProjectData[] = [
+export interface ProjectDetailData extends ProjectData {
+    gallery: GalleryImage[];
+}
+
+export const ProjectDetails: ProjectData[] = [
+    {
+        slug: "mesajil-ecommerce",
+        category: "mobile",
+        technologies: ["Kotlin", "Android", "MySQL", "REST API"],
+        image: "/projects/mesajil-ecommerce.jpg",
+        githubUrl: "https://github.com/HereticSoba/Mesajil-AppMovil",
+    },
+    {
+        slug: "mesajil-api",
+        category: "backend",
+        technologies: [".NET 8", "C#", "MySQL", "JWT", "Swagger"],
+        image: "/projects/mesajil-api.png",
+        githubUrl: "https://github.com/HereticSoba/Mesajil-Backend",
+    },
+    {
+        slug: "movies-api-microservices",
+        category: "backend",
+        technologies: ["Java", "Spring Boot", "OpenFeign", "Keycloak", "Docker"],
+        image: "/projects/microservicios.png",
+        githubUrl: "https://github.com/HereticSoba/MicroservicioPeliculas",
+    },
+];
+
+export const projectDetails: ProjectDetailData[] = [
     {
         slug: "mesajil-ecommerce",
         category: "mobile",

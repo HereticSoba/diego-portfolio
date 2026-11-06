@@ -7,7 +7,6 @@ const en = {
         github: "GitHub",
         experience: "Experience",
         contact: "Contact",
-        cv: "Download CV",
     },
 
     hero: {
@@ -16,7 +15,7 @@ const en = {
         titleHighlight: "Developer",
         description:
             "I focus on building mobile applications, APIs, and software solutions that are scalable, maintainable, and built following good development practices.",
-        projectsButton: "View projects",
+        cvButton: "Download CV",
         mobile: "Mobile",
         backend: "Backend",
     },
@@ -31,6 +30,8 @@ const en = {
             "I am interested in building software solutions that integrate applications, services, and databases, with a focus on creating functional, maintainable systems aligned with client needs.",
         paragraph3:
             "My experience in IT support has given me a practical perspective on technology, from troubleshooting and incident resolution to the implementation and maintenance of solutions.",
+        readMore: "Read more",
+        readLess: "Read less",
         development: "Development",
         developmentDescription: "Frontend · Backend · Mobile · APIs",
         experience: "Experience",
@@ -51,25 +52,19 @@ const en = {
         mobile: "Mobile",
         web: "Web",
         backend: "Backend",
+        comingSoon: "Coming soon",
+        comingSoonDescription: "I'm working on new web projects.",
         viewProject: "View project",
         viewGithub: "View on GitHub ↗",
         preview: "Preview",
         imageAlt: "Preview of",
-        descriptions: {
-            "mesajil-ecommerce":
-                "Mobile e-commerce application developed to manage users, products, favorites, and purchases, integrated with backend services.",
-            "mesajil-api":
-                "REST API developed to handle the platform's main operations, connected to MySQL and secured with JWT authentication.",
-            "movies-api-microservices":
-                "Backend project focused on service and API development, using a microservices architecture and inter-service communication.",
-        },
     },
 
     skills: {
         label: "/ STACK",
         title: "Technologies and",
         titleHighlight: "tools",
-        subtitle: "Technologies and tools I use to develop, test, and mantain my projects.",
+        subtitle: "Technologies and tools I use to develop, test, and maintain my projects.",
         groups: {
             languages: "Languages",
             frameworks: "Frameworks & Platforms",
@@ -98,6 +93,8 @@ const en = {
         title: "Professional",
         titleHighlight: "experience",
         subtitle: "Experience gained in corporate and commercial environments, developing technical, operational, and customer service skills.",
+        viewDetails: "View details",
+        hideDetails: "Hide details",
         roles: {
             soporte: {
                 year: "2026",
@@ -161,7 +158,7 @@ const en = {
     },
 
     footer: {
-        role: "Systems Developer",
+        role: "Full Stack Developer",
         backToTop: "Back to top",
         copyright: "© {{year}} Developed by Diego Solórzano",
         builtWith: "Built with React + TypeScript",

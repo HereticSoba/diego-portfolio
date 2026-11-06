@@ -7,7 +7,6 @@ const es = {
         github: "GitHub",
         experience: "Experiencia",
         contact: "Contacto",
-        cv: "Descargar CV",
     },
 
     hero: {
@@ -15,7 +14,7 @@ const es = {
         title: "Desarrollador",
         titleHighlight: "Full stack",
         description: "Me enfoco en desarrollar aplicaciones móviles, APIs y soluciones de software que logren ser escalables, mantenibles y con buenas prácticas de desarrollo.",
-        projectsButton: "Ver proyectos",
+        cvButton: "Descargar CV",
         mobile: "Móvil",
         backend: "Backend",
     },
@@ -30,6 +29,8 @@ const es = {
             "Me interesa desarrollar soluciones de software que integren aplicaciones, servicios y bases de datos, buscando crear sistemas funcionales, mantenibles y orientados a las necesidades del cliente.",
         paragraph3:
             "Mi experiencia en soporte TI me ha permitido desarrollar una visión práctica de la tecnología, desde la atención y resolución de incidencias hasta la implementación y mantenimiento de soluciones.",
+        readMore: "Leer más",
+        readLess: "Leer menos",
         development: "Desarrollo",
         developmentDescription: "Frontend · Backend · Mobile · APIs",
         experience: "Experiencia",
@@ -50,18 +51,12 @@ const es = {
         mobile: "Móvil",
         web: "Web",
         backend: "Backend",
+        comingSoon: "Próximamente",
+        comingSoonDescription: "Estoy preparando nuevos proyectos web.",
         viewProject: "Ver proyecto",
         viewGithub: "Ver en GitHub ↗",
         preview: "Vista previa",
         imageAlt: "Vista previa de",
-        descriptions: {
-            "mesajil-ecommerce":
-                "Aplicación móvil de comercio electrónico desarrollada para gestionar usuarios, productos, favoritos y compras, integrada con servicios backend.",
-            "mesajil-api":
-                "API REST desarrollada para gestionar las operaciones principales de la plataforma, con conexión a MySQL y autenticación mediante JWT.",
-            "movies-api-microservices":
-                "Proyecto backend orientado al desarrollo de servicios y APIs, trabajado con arquitectura de microservicios y comunicación entre servicios.",
-        },
     },
 
     skills: {
@@ -97,6 +92,8 @@ const es = {
         title: "Experiencia",
         titleHighlight: "profesional",
         subtitle: "Experiencia adquirida en entornos corporativos y comerciales, desarrollando habilidades técnicas, operativas y de atención.",
+        viewDetails: "Ver detalles",
+        hideDetails: "Ocultar detalles",
         roles: {
             soporte: {
                 year: "2026",
@@ -160,7 +157,7 @@ const es = {
     },
 
     footer: {
-        role: "Desarrollador de sistemas",
+        role: "Desarrollador Full Stack",
         backToTop: "Volver arriba",
         copyright: "© {{year}} Desarrollado por Diego Solórzano.",
         builtWith: "Hecho con React + TypeScript",

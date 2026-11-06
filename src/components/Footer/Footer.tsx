@@ -33,9 +33,6 @@ function Footer() {
                         Email
                     </a>
                 </div>
-                <a href="#inicio" className="footer-top">
-                    {t("footer.backToTop")}<span>↑</span>
-                </a>
             </div>
             <div className="footer-bottom">
                 <p>{t("footer.copyright",{year: currentYear})}</p>

@@ -1,11 +1,15 @@
-import { FaGithub } from "react-icons/fa";
+import { FaFilePdf } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import SectionBackground from "../../components/SectionBackground/SectionBackground";
 import "./Hero.css";
+
 
 function Hero() {
     const { t } = useTranslation();
     return (
         <section id="inicio" className="hero-section">
+            <SectionBackground withSpotlight />
+
             <div className="hero-container">
 
                 <div className="hero-content">
@@ -13,14 +17,17 @@ function Hero() {
                     <h1 className="hero-title">{t("hero.title")}<span>{t("hero.titleHighlight")}</span></h1>
                     <p className="hero-description">{t("hero.description")}</p>
                     <div className="hero-buttons">
-                        <a href="#proyectos" className="hero-button primary">{t("hero.projectsButton")}</a>
+                        <a href="/projects/CV-SOLORZANO-VILLEGAS-DIEGO.pdf"
+                            download="CV-SOLORZANO-VILLEGAS-DIEGO.pdf"
+                            className="hero-button primary">
+                            <FaFilePdf className="hero-button-icon" aria-hidden="true" />
+                            {t("hero.cvButton")}
+                        </a>
 
-                        <a href="https://github.com/HereticSoba"
-                            target="_blank"
+                        <a href="#proyectos"
                             rel="noopener noreferrer"
                             className="hero-button secondary">
-                            <FaGithub className="github-icon" />
-                            GitHub
+                            Proyectos
                         </a>
                     </div>
                     <div className="hero-technologies">
@@ -46,23 +53,6 @@ function Hero() {
                 <div className="hero-image-container">
                     <div className="hero-avatar-wrapper">
                         <div className="hero-avatar-glow"></div>
-                        <div className="hero-avatar-code-ring">
-
-                            <svg className="star-geometry" viewBox="0 0 200 200">
-                                <circle cx="100" cy="100" r="95" className="ring-outer"/>
-                                <circle cx="100" cy="100" r="90" className="ring-inner"/>
-                                <circle cx="100" cy="100" r="62" className="ring-center"/>
-
-                                <polygon
-                                points="100, 6 160, 172 23, 62 192, 122, 8, 122 177, 62 40, 172 100, 6"
-                                className="ring-star"/>
-                            </svg>
-
-                            <span>{"{ }"}</span>
-                            <span>{"</>"}</span>
-                            <span>{"=>"}</span>
-                            <span>{">_"}</span>
-                        </div>
                         <div className="hero-image">
                             <img
                                 src="/projects/diego-profile.jpeg"

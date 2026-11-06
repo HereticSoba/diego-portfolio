@@ -43,18 +43,10 @@
 
 .experience-item {
     display: grid;
-    grid-template-columns: 100px 30px 1fr;
+    grid-template-columns: 30px 1fr;
     gap: 25px;
     position: relative;
     min-height: 220px;
-}
-
-.experience-year {
-    padding-top: 2px;
-    color: var(--accent);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 1px;
 }
 
 .experience-marker {
@@ -109,10 +101,48 @@
 
 .experience-description {
     max-width: 700px;
-    margin: 18px 0 20px;
+    margin: 18px 0 0;
     color: var(--text-secondary);
     font-size: 14px;
     line-height: 1.8;
+}
+
+.experience-collapsible {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+}
+
+.experience-collapsible.is-open {
+    grid-template-rows: 1fr;
+}
+
+.experience-collapsible-inner {
+    overflow: hidden;
+}
+
+.experience-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--accent);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.experience-toggle svg {
+    font-size: 16px;
+    transition: transform 0.35s ease;
+}
+
+.experience-toggle svg.open {
+    transform: rotate(180deg);
 }
 
 .experience-highlights {
@@ -160,14 +190,9 @@
     }
 
     .experience-item {
-        grid-template-columns: 55px 24px 1fr;
+        grid-template-columns: 24px 1fr;
         gap: 14px;
         min-height: 0;
-    }
-
-    .experience-year {
-        padding-top: 2px;
-        font-size: 12px;
     }
 
     .experience-marker {
@@ -196,7 +221,7 @@
 
     .experience-description {
         max-width: none;
-        margin: 14px 0 18px;
+        margin: 14px 0 0;
         font-size: 13px;
         line-height: 1.7;
     }
@@ -208,5 +233,12 @@
     .experience-highlights span {
         padding: 6px 9px;
         font-size: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .experience-collapsible,
+    .experience-toggle svg {
+        transition: none;
     }
 }

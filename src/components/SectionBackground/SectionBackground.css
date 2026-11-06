@@ -1,0 +1,106 @@
+.section-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.section-bg-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(0deg, var(--accent) 1px, transparent 1px),
+        linear-gradient(90deg, var(--accent) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.10;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    animation: gridDrift 16s linear infinite;
+}
+
+.section-bg-glow {
+    position: absolute;
+    z-index: 0;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    filter: blur(80px);
+    opacity: 0.25;
+    pointer-events: none;
+    animation: heroGlowFloat 20s ease-in-out infinite alternate;
+}
+
+.section-bg-glow-1 {
+    top: -120px;
+    right: -100px;
+}
+
+.section-bg-glow-2 {
+    bottom: -140px;
+    left: -120px;
+    animation-delay: -10s;
+}
+
+.section-bg-spotlight {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(
+        circle 340px at var(--spotlight-x, 50%) var(--spotlight-y, 40%),
+        var(--accent) 0%,
+        transparent 70%
+    );
+    opacity: 0.18;
+}
+
+@keyframes gridDrift {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 48px 48px;
+    }
+}
+
+@keyframes heroGlowFloat {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(40px, 40px, 0);
+    }
+}
+
+[data-theme="light"] .section-bg-grid {
+    opacity: 0.14;
+}
+
+[data-theme="light"] .section-bg-glow {
+    opacity: 0.35;
+}
+
+[data-theme="light"] .section-bg-spotlight {
+    opacity: 0.22;
+}
+
+@media (max-width: 700px) {
+    .section-bg-glow {
+        width: 260px;
+        height: 260px;
+        filter: blur(60px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .section-bg-grid,
+    .section-bg-glow {
+        animation: none;
+    }
+}

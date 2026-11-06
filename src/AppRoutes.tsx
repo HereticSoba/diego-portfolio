@@ -8,6 +8,7 @@ import Skills from "./sections/Skills/Skills";
 import Experience from "./sections/Experience/Experience";
 import Contact from "./sections/Contact/Contact";
 import Footer from "./components/Footer/Footer";
+import BackToTop from "./components/BackToTop/BackToTop";
 import GithubActivity from "./sections/GithubActivity/GithubActivity";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import SplashScreen from "./components/SplashScreen/SplashScreen";
@@ -46,6 +47,7 @@ export function AppRoutes() {
               </FadeIn>
               <Footer />
             </main>
+            <BackToTop />
           </>
         }
         />

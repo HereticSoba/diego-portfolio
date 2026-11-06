@@ -2,6 +2,7 @@ import "./Contact.css";
 import { useState, type FormEvent } from "react";
 import { FaEnvelope, FaGithub, FaLinkedin, FaFilePdf } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import SectionBackground from "../../components/SectionBackground/SectionBackground";
 
 function Contact() {
     const { t } = useTranslation();
@@ -77,6 +78,8 @@ function Contact() {
     };
     return (
         <section id="contacto" className="contact-section">
+            <SectionBackground />
+
             <div className="contact-container">
                 <div className="contact-left">
                     <div className="contact-intro">
@@ -133,6 +136,10 @@ function Contact() {
                             <span className="contact-arrow">↓</span>
                         </a>
                     </div>
+                </div>
+
+                <div className="contact-divider" aria-hidden="true">
+                    <span className="contact-divider-letter">ó</span>
                 </div>
 
                 <div className="contact-form-box">

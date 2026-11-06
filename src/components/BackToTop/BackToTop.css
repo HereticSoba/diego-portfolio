@@ -1,0 +1,77 @@
+.back-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 900;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    background-color: var(--bg-secondary);
+    color: var(--accent);
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        border-color 0.2s ease,
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.back-to-top svg {
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.back-to-top:hover {
+    border-color: var(--accent);
+}
+
+.back-to-top:hover svg {
+    transform: translateY(-3px);
+}
+
+.back-to-top:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+    .back-to-top {
+        right: 16px;
+        bottom: 80px;
+        width: 48px;
+        height: 48px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .back-to-top,
+    .back-to-top svg {
+        transition: none;
+    }
+
+    .back-to-top,
+    .back-to-top.visible {
+        transform: none;
+    }
+
+    .back-to-top:hover svg {
+        transform: none;
+    }
+}

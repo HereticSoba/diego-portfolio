@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaGithub } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import "./Navbar.css";
 
@@ -97,8 +98,13 @@ function Navbar() {
                         aria-label={darkMode ? "Activar modo claro" : "Activar modo oscuro"}>
                         {darkMode ? "☀" : "☾"}
                     </button>
-                    <a href="/projects/CV-SOLORZANO-VILLEGAS-DIEGO.pdf" download="CV-SOLORZANO-VILLEGAS-DIEGO.pdf"
-                        className="navbar-cv">{t("navbar.cv")}</a>
+                    <a href="https://github.com/HereticSoba"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="navbar-cv">
+                        <FaGithub aria-hidden="true" />
+                        {t("navbar.github")}
+                    </a>
 
                     <button
                         type="button"
