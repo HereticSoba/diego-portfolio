@@ -37,10 +37,10 @@ export function AppRoutes() {
                 <Skills />
               </FadeIn>
               <FadeIn>
-                <GithubActivity />
+                <Experience />
               </FadeIn>
               <FadeIn>
-                <Experience />
+                <GithubActivity />
               </FadeIn>
               <FadeIn>
                 <Contact />

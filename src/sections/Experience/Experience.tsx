@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
+import SectionBackground from "../../components/SectionBackground/SectionBackground";
 import "./Experience.css";
 
 interface ExperienceItem {
@@ -8,7 +9,7 @@ interface ExperienceItem {
     year: string;
     position: string;
     company: string;
-    description: string;
+    details: string;
     highlights: string;
 }
 
@@ -18,7 +19,7 @@ const experiences: ExperienceItem[] = [
         year: "experience.roles.soporte.year",
         position: "experience.roles.soporte.position",
         company: "experience.roles.soporte.company",
-        description: "experience.roles.soporte.description",
+        details: "experience.roles.soporte.details",
         highlights: "experience.roles.soporte.highlights",
     },
     {
@@ -26,7 +27,7 @@ const experiences: ExperienceItem[] = [
         year: "experience.roles.ventas.year",
         position: "experience.roles.ventas.position",
         company: "experience.roles.ventas.company",
-        description: "experience.roles.ventas.description",
+        details: "experience.roles.ventas.details",
         highlights: "experience.roles.ventas.highlights",
     },
 ];
@@ -44,6 +45,7 @@ function Experience() {
 
     return (
         <section id="experiencia" className="experience-section">
+            <SectionBackground withSpotlight />
             <div className="experience-container">
                 <div className="experience-header">
                     <p className="section-label">{t("experience.label")}</p>
@@ -58,6 +60,9 @@ function Experience() {
                         const highlights = t(experience.highlights, {
                             returnObjects: true,
                         }) as string[];
+                        const details = t(experience.details, {
+                            returnObjects: true,
+                        }) as string[];
                         const isExpanded = Boolean(expandedItems[experience.id]);
                         const detailsId = `experience-details-${experience.id}`;
                         return (
@@ -70,19 +75,28 @@ function Experience() {
                                         {t(experience.position)} · {t(experience.year)}
                                     </p>
                                     <h3>{t(experience.company)}</h3>
+                                    <br></br>
                                     <div className="experience-highlights">
                                         {Array.isArray(highlights) &&
                                             highlights.map((highlight) => (
                                                 <span key={highlight}>{highlight}</span>
                                             ))}
                                     </div>
+                                    {!isExpanded && Array.isArray(details) && details[0] && (
+                                        <ul className="experience-preview" aria-hidden="true">
+                                            <li>{details[0]}</li>
+                                        </ul>
+                                    )}
                                     <div
                                         id={detailsId}
                                         className={`experience-collapsible ${isExpanded ? "is-open" : ""}`}>
                                         <div className="experience-collapsible-inner">
-                                            <p className="experience-description">
-                                                {t(experience.description)}
-                                            </p>
+                                            <ul className="experience-details-list">
+                                                {Array.isArray(details) &&
+                                                    details.map((detail) => (
+                                                        <li key={detail}>{detail}</li>
+                                                    ))}
+                                            </ul>
                                         </div>
                                     </div>
                                     <button

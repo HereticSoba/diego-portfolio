@@ -41,7 +41,9 @@ body {
   margin: 0;
   color: var(--text-primary);
   font-family: Arial, Helvetica, sans-serif;
-  transition: color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 a {
@@ -51,23 +53,6 @@ a {
 button,
 a {
   -webkit-tap-highlight-color: transparent;
-}
-
-/* Transición de tema */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-}
-
-::view-transition-new(root) {
-  clip-path: circle(0px at var(--theme-x) var(--theme-y));
-  animation: theme-reveal 0.45s ease-out forwards;
-}
-
-@keyframes theme-reveal {
-  to {
-    clip-path: circle(var(--theme-radius) at var(--theme-x) var(--theme-y));
-  }
 }
 
 .fade-in-section {

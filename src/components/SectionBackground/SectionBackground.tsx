@@ -14,7 +14,8 @@ function SectionBackground({ withSpotlight = false }: SectionBackgroundProps) {
         }
 
         const container = containerRef.current;
-        if (!container) {
+        const section = container?.parentElement;
+        if (!container || !section) {
             return;
         }
 
@@ -38,7 +39,7 @@ function SectionBackground({ withSpotlight = false }: SectionBackgroundProps) {
         };
 
         const handleMouseMove = (event: MouseEvent) => {
-            const rect = container.getBoundingClientRect();
+            const rect = section.getBoundingClientRect();
             nextX = event.clientX - rect.left;
             nextY = event.clientY - rect.top;
 
@@ -47,10 +48,23 @@ function SectionBackground({ withSpotlight = false }: SectionBackgroundProps) {
             }
         };
 
-        window.addEventListener("mousemove", handleMouseMove, { passive: true });
+        const handleMouseEnter = () => container.classList.add("is-active");
+        const handleMouseLeave = () => {
+            container.classList.remove("is-active");
+            if (frame !== null) {
+                window.cancelAnimationFrame(frame);
+                frame = null;
+            }
+        };
+
+        section.addEventListener("mousemove", handleMouseMove, { passive: true });
+        section.addEventListener("mouseenter", handleMouseEnter);
+        section.addEventListener("mouseleave", handleMouseLeave);
 
         return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
+            section.removeEventListener("mousemove", handleMouseMove);
+            section.removeEventListener("mouseenter", handleMouseEnter);
+            section.removeEventListener("mouseleave", handleMouseLeave);
             if (frame !== null) {
                 window.cancelAnimationFrame(frame);
             }

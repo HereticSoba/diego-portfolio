@@ -3,9 +3,7 @@ import { FaGithub } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import "./Navbar.css";
 
-function Navbar() {
-    const { t, i18n } = useTranslation();
-    const [menuOpen, setMenuOpen] = useState(false);
+function NavbarThemeToggle() {
     const [darkMode, setDarkMode] = useState(() => {
         if (typeof window === "undefined") {
             return true;
@@ -18,35 +16,32 @@ function Navbar() {
         document.documentElement.removeAttribute("data-theme");
         return true;
     });
-    const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
-        const button = event.currentTarget;
-        const rect = button.getBoundingClientRect();
-        const x = rect.left + rect.width / 2;
-        const y = rect.top + rect.height / 2;
-        const maxDistance = Math.hypot(
-            Math.max(x, window.innerWidth - x),
-            Math.max(y, window.innerHeight - y)
-        );
-        document.documentElement.style.setProperty("--theme-x", `${x}px`);
-        document.documentElement.style.setProperty("--theme-y", `${y}px`);
-        document.documentElement.style.setProperty("--theme-radius", `${maxDistance}px`);
-        const changeTheme = () => {
-            const newDarkMode = !darkMode;
-            setDarkMode(newDarkMode);
-            if (newDarkMode) {
-                document.documentElement.removeAttribute("data-theme");
-                localStorage.setItem("theme", "dark");
-            } else {
-                document.documentElement.setAttribute("data-theme", "light");
-                localStorage.setItem("theme", "light");
-            }
-        };
-        if ("startViewTransition" in document) {
-            document.startViewTransition(changeTheme);
+    const toggleTheme = () => {
+        const newDarkMode = !darkMode;
+        setDarkMode(newDarkMode);
+        if (newDarkMode) {
+            document.documentElement.removeAttribute("data-theme");
+            localStorage.setItem("theme", "dark");
         } else {
-            changeTheme();
+            document.documentElement.setAttribute("data-theme", "light");
+            localStorage.setItem("theme", "light");
         }
     };
+
+    return (
+        <button
+            type="button"
+            className="navbar-theme"
+            onClick={toggleTheme}
+            aria-label={darkMode ? "Activar modo claro" : "Activar modo oscuro"}>
+            {darkMode ? "☀" : "☾"}
+        </button>
+    );
+}
+
+function Navbar() {
+    const { t, i18n } = useTranslation();
+    const [menuOpen, setMenuOpen] = useState(false);
     const handleNavigation = (
         event: React.MouseEvent<HTMLAnchorElement>) => {
         event.preventDefault();
@@ -64,10 +59,9 @@ function Navbar() {
         });
         setMenuOpen(false);
     };
-    const toggleLanguage = () => {
-        const newLanguage = i18n.language === "es" ? "en" : "es";
-        i18n.changeLanguage(newLanguage);
-        localStorage.setItem("language", newLanguage);
+    const changeLanguage = (language: "es" | "en") => {
+        void i18n.changeLanguage(language);
+        localStorage.setItem("language", language);
     };
     return (
         <header className="navbar">
@@ -80,24 +74,31 @@ function Navbar() {
                     <a href="#sobre-mi" onClick={handleNavigation}>{t("navbar.about")}</a>
                     <a href="#proyectos" onClick={handleNavigation}>{t("navbar.projects")}</a>
                     <a href="#stack" onClick={handleNavigation}>{t("navbar.stack")}</a>
-                    <a href="#github-activity" onClick={handleNavigation}>{t("navbar.github")}</a>
                     <a href="#experiencia" onClick={handleNavigation}>{t("navbar.experience")}</a>
+                    <a href="#github-activity" onClick={handleNavigation}>{t("navbar.github")}</a>
                     <a href="#contacto" onClick={handleNavigation}>{t("navbar.contact")}</a>
                 </nav>
                 <div className="navbar-actions">
-                    <button type="button" className={`navbar-language-switch ${i18n.language === "en" ? "is-en" : ""}`}
-                        onClick={toggleLanguage}
-                        aria-label="Cambiar idioma">
-                        <span className={`lang-option ${i18n.language === "es" ? "active" : ""}`}>ES</span>
-                        <span className={`lang-option ${i18n.language === "en" ? "active" : ""}`}>EN</span>
-                    </button>
-                    <button
-                        type="button"
-                        className="navbar-theme"
-                        onClick={toggleTheme}
-                        aria-label={darkMode ? "Activar modo claro" : "Activar modo oscuro"}>
-                        {darkMode ? "☀" : "☾"}
-                    </button>
+                    <div
+                        className={`navbar-language-switch ${i18n.language.startsWith("en") ? "is-en" : ""}`}
+                        role="group"
+                        aria-label={t("navbar.language")}>
+                        <button
+                            type="button"
+                            className={`lang-option ${i18n.language.startsWith("es") ? "active" : ""}`}
+                            onClick={() => changeLanguage("es")}
+                            aria-pressed={i18n.language.startsWith("es")}>
+                            ES
+                        </button>
+                        <button
+                            type="button"
+                            className={`lang-option ${i18n.language.startsWith("en") ? "active" : ""}`}
+                            onClick={() => changeLanguage("en")}
+                            aria-pressed={i18n.language.startsWith("en")}>
+                            EN
+                        </button>
+                    </div>
+                    <NavbarThemeToggle />
                     <a href="https://github.com/HereticSoba"
                         target="_blank"
                         rel="noopener noreferrer"

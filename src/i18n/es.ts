@@ -7,6 +7,7 @@ const es = {
         github: "GitHub",
         experience: "Experiencia",
         contact: "Contacto",
+        language: "Idioma",
     },
 
     hero: {
@@ -53,8 +54,9 @@ const es = {
         backend: "Backend",
         comingSoon: "Próximamente",
         comingSoonDescription: "Estoy preparando nuevos proyectos web.",
-        viewProject: "Ver proyecto",
-        viewGithub: "Ver en GitHub ↗",
+        prevProject: "Proyecto anterior",
+        nextProject: "Proyecto siguiente",
+        viewDetails: "Ver detalles",
         preview: "Vista previa",
         imageAlt: "Vista previa de",
     },
@@ -64,6 +66,8 @@ const es = {
         title: "Tecnologías y",
         titleHighlight: "herramientas",
         subtitle: "Tecnologías y herramientas que utilizo para desarrollar, probar y mantener mis proyectos.",
+        categoryTabs: "Categorías de tecnología",
+        totalTechnologies: "{{count}} tecnologías",
         groups: {
             languages: "Lenguajes",
             frameworks: "Frameworks & Plataformas",
@@ -99,14 +103,26 @@ const es = {
                 year: "2026",
                 position: "Técnico de soporte",
                 company: "Alternativa Tecnológica S.A.C. - Proyecto BCP",
-                description: "Atención y resolución de incidencias de hardware y software de segundo nivel, gestión y seguimiento de tickets en Jira, instalación y configuración de equipos, mantenimiento preventivo y correctivo y gestión de equipos unidos a dominio.",
+                details: [
+                    "Atención y resolución de incidencias de hardware y software de segundo nivel.",
+                    "Gestión y seguimiento de tickets mediante Jira.",
+                    "Seguimiento proactivo a usuarios para verificar el estado de sus equipos e identificar posibles inconvenientes.",
+                    "Instalación, configuración, mantenimiento preventivo y correctivo de equipos.",
+                    "Gestión de equipos unidos en dominio (Active Directory).",
+                    "Documentación y seguimiento de incidencias hasta su resolución.",
+                ],
                 highlights: ["Jira", "Active Directory", "Hardware", "Software"],
             },
             ventas: {
                 year: "2025",
                 position: "Asesor de ventas",
                 company: "Amaru Store E.I.R.L.",
-                description: "Gestión de apertura del local, control de inventario y solicitud de componentes, laptops y equipos para puntos de venta. Asesoramiento especializado en la selección de equipos tecnológicos.",
+                details: [
+                    "Gestión de apertura del establecimiento y preparación del punto de venta.",
+                    "Control de inventario y solicitud de componentes, laptops y equipos para negocios.",
+                    "Asesoramiento especializado a clientes en la selección de computadores, laptops y dispositivos para entornos comerciales.",
+                    "Orientación sobre equipos complementarios, como impresoras térmicas y lectores de códigos de barras.",
+                ],
                 highlights: ["Inventario", "Tecnología", "Atención al cliente", "Ventas"],
             },
         },
@@ -165,6 +181,8 @@ const es = {
 
     projectDetail: {
         backToProjects: "Volver a proyectos",
+        liveDemo: "Ver en vivo",
+        viewOnGithub: "Ver en GitHub",
         projectLabel: "/ PROYECTO",
         notFoundLabel: "/ PROYECTO",
         notFoundTitle: "Proyecto no encontrado",
@@ -241,6 +259,21 @@ const es = {
                 "SWAGGER - API RESEÑAS",
                 "DOCKER"
             ]
+        },
+        "gitcord": {
+            title: "GitCord",
+            description: "Bot serverless que envía notificaciones de GitHub a canales de Discord en tiempo real, con un panel web para gestionar las conexiones.",
+            about: [
+                "Bot que escucha eventos de GitHub mediante webhooks y publica notificaciones formateadas en un canal de Discord, sin necesidad de mantener un servidor propio.",
+                "Incluye un panel web con inicio de sesión mediante Supabase, desde donde se registran, prueban y eliminan las conexiones entre repositorios y canales de Discord."
+            ],
+            features: [
+                "Notificaciones de push con autor, cantidad de commits y enlace a los cambios.",
+                "Notificaciones de issues al abrirse, editarse o cerrarse, con título, autor y enlace.",
+                "Panel para registrar y eliminar conexiones, con webhooks enmascarados.",
+                "Prueba de conexión que envía un mensaje de verificación al canal de Discord."
+            ],
+            galleryTitles: []
         },
     },
 };

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import SectionBackground from "../../components/SectionBackground/SectionBackground";
 import "./GithubActivity.css";
 
 interface ContributionDay {
@@ -73,8 +72,6 @@ function GithubActivity() {
 
     return (
         <section id="github-activity" className="github-section">
-            <SectionBackground />
-
             <div className="github-container">
                 <div className="github-header">
                     <div>

@@ -14,8 +14,7 @@
     z-index: 1000;
     transition:
         background-color 0.3s ease,
-        border-color 0.3s ease,
-        backdrop-filter 0.3s ease;
+        border-color 0.3s ease;
 }
 
 .navbar-container {
@@ -101,10 +100,8 @@
     padding: 3px;
     border: 1px solid var(--border-secondary);
     border-radius: 20px;
-    background-color: var(--bg-secondary);
-    cursor: pointer;
     overflow: hidden;
-    transition: color 0.25s ease;
+    transition: border-color 0.25s ease;
 }
 
 .navbar-language-switch:hover {
@@ -121,7 +118,7 @@
     background-color: var(--accent);
     border-radius: 14px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar-language-switch.is-en::before {
@@ -131,17 +128,31 @@
 .lang-option {
     position: relative;
     z-index: 1;
-    padding: 4px 10px;
+    min-width: 31px;
+    padding: 4px 7px;
+    border: 0;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: inherit;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    color: var(--text-muted);
-    transition: color 0.3s ease;
-    user-select: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
 .lang-option.active {
-    color: var(--bg-primary);
+    color: #050505;
+}
+
+.lang-option:not(.active):hover {
+    color: var(--text-primary);
+}
+
+.navbar-language-switch .lang-option:focus-visible {
+    z-index: 2;
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
 }
 
 .navbar-theme {
@@ -221,6 +232,8 @@
         width: 92dvw;
         border-radius: 14px;
         z-index: 9999;
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
     }
 
     main {
@@ -260,8 +273,8 @@
         align-items: stretch;
         gap: 0;
         background-color: var(--bg-secondary);
-        -webkit-backdrop-filter: blur(16px);
-        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px) scale(0.98);
@@ -301,10 +314,26 @@
         gap: 10px;
     }
 
+    .navbar-language-switch {
+        padding: 2px;
+    }
+
+    .lang-option {
+        min-width: 27px;
+        padding: 4px 5px;
+    }
+
     .navbar-theme {
         display: flex;
         width: 42px;
         height: 42px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navbar-language-switch::before,
+    .lang-option {
+        transition: none;
     }
 }
 

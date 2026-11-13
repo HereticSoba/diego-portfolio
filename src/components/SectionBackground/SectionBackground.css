@@ -11,14 +11,21 @@
     inset: 0;
     z-index: 0;
     pointer-events: none;
+    opacity: 0.10;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+.section-bg-grid::before {
+    position: absolute;
+    inset: -48px;
     background-image:
         linear-gradient(0deg, var(--accent) 1px, transparent 1px),
         linear-gradient(90deg, var(--accent) 1px, transparent 1px);
     background-size: 48px 48px;
-    opacity: 0.10;
-    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
-    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    content: "";
     animation: gridDrift 16s linear infinite;
+    will-change: transform;
 }
 
 .section-bg-glow {
@@ -27,8 +34,7 @@
     width: 420px;
     height: 420px;
     border-radius: 50%;
-    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-    filter: blur(80px);
+    background: radial-gradient(circle, var(--accent) 0%, transparent 82%);
     opacity: 0.25;
     pointer-events: none;
     animation: heroGlowFloat 20s ease-in-out infinite alternate;
@@ -55,16 +61,21 @@
         var(--accent) 0%,
         transparent 70%
     );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.section-bg.is-active .section-bg-spotlight {
     opacity: 0.18;
 }
 
 @keyframes gridDrift {
     from {
-        background-position: 0 0;
+        transform: translate3d(0, 0, 0);
     }
 
     to {
-        background-position: 48px 48px;
+        transform: translate3d(48px, 48px, 0);
     }
 }
 
@@ -86,7 +97,7 @@
     opacity: 0.35;
 }
 
-[data-theme="light"] .section-bg-spotlight {
+[data-theme="light"] .section-bg.is-active .section-bg-spotlight {
     opacity: 0.22;
 }
 
@@ -94,13 +105,13 @@
     .section-bg-glow {
         width: 260px;
         height: 260px;
-        filter: blur(60px);
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .section-bg-grid,
+    .section-bg-grid::before,
     .section-bg-glow {
         animation: none;
+        will-change: auto;
     }
 }

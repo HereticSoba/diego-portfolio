@@ -7,6 +7,7 @@ const en = {
         github: "GitHub",
         experience: "Experience",
         contact: "Contact",
+        language: "Language",
     },
 
     hero: {
@@ -54,8 +55,9 @@ const en = {
         backend: "Backend",
         comingSoon: "Coming soon",
         comingSoonDescription: "I'm working on new web projects.",
-        viewProject: "View project",
-        viewGithub: "View on GitHub ↗",
+        prevProject: "Previous project",
+        nextProject: "Next project",
+        viewDetails: "View details",
         preview: "Preview",
         imageAlt: "Preview of",
     },
@@ -65,6 +67,8 @@ const en = {
         title: "Technologies and",
         titleHighlight: "tools",
         subtitle: "Technologies and tools I use to develop, test, and maintain my projects.",
+        categoryTabs: "Technology categories",
+        totalTechnologies: "{{count}} technologies",
         groups: {
             languages: "Languages",
             frameworks: "Frameworks & Platforms",
@@ -100,14 +104,26 @@ const en = {
                 year: "2026",
                 position: "Support Technician",
                 company: "Alternativa Tecnológica S.A.C. · BCP Project",
-                description: "Tier-2 hardware and software incident resolution, ticket tracking in Jira, equipment installation and configuration, preventive/corrective maintenance, and domain-joined device management.",
+                details: [
+                    "Second-level hardware and software incident resolution.",
+                    "Jira ticket management and follow-up.",
+                    "Proactive follow-up with users to check the status of their equipment and identify potential issues.",
+                    "Equipment installation, configuration, and preventive and corrective maintenance.",
+                    "Management of domain-joined devices (Active Directory).",
+                    "Incident documentation and follow-up through resolution.",
+                ],
                 highlights: ["Jira", "Active Directory", "Hardware", "Software"],
             },
             ventas: {
                 year: "2025",
                 position: "Sales Advisor",
                 company: "Amaru Store E.I.R.L.",
-                description: "Store opening management, inventory control, and supply requests for laptops, components, and POS equipment. Specialized consulting for tech product selection.",
+                details: [
+                    "Opening the store and preparing the point of sale.",
+                    "Inventory control and ordering of components, laptops, and equipment for businesses.",
+                    "Providing specialized advice to customers on selecting computers, laptops, and devices for business environments.",
+                    "Guidance on complementary equipment, such as thermal printers and barcode scanners.",
+                ],
                 highlights: ["Inventory", "Technology", "Customer Support", "Sales"],
             },
         },
@@ -166,6 +182,8 @@ const en = {
 
     projectDetail: {
         backToProjects: "Back to projects",
+        liveDemo: "View live",
+        viewOnGithub: "View on GitHub",
         projectLabel: "/ PROJECT",
         notFoundLabel: "/ PROJECT",
         notFoundTitle: "Project not found",
@@ -242,6 +260,21 @@ const en = {
                 "SWAGGER - REVIEWS API",
                 "DOCKER"
             ]
+        },
+        "gitcord": {
+            title: "GitCord",
+            description: "A serverless bot that sends real-time GitHub notifications to Discord channels, with a web dashboard for managing connections.",
+            about: [
+                "A bot that listens for GitHub events through webhooks and posts formatted notifications to a Discord channel, without requiring a self-hosted server.",
+                "Includes a web dashboard with Supabase authentication for creating, testing, and removing connections between repositories and Discord channels."
+            ],
+            features: [
+                "Push notifications with the author, commit count, and a link to the changes.",
+                "Issue notifications when issues are opened, edited, or closed, including the title, author, and a link.",
+                "A dashboard for creating and removing connections, with masked webhook URLs.",
+                "A connection test that sends a verification message to the Discord channel."
+            ],
+            galleryTitles: []
         },
     },
 };

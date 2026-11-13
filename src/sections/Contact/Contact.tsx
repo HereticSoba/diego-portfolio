@@ -78,7 +78,7 @@ function Contact() {
     };
     return (
         <section id="contacto" className="contact-section">
-            <SectionBackground />
+            <SectionBackground withSpotlight />
 
             <div className="contact-container">
                 <div className="contact-left">
